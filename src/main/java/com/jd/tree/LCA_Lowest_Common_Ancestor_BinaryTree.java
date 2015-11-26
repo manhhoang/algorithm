@@ -10,7 +10,7 @@ class Node {
   }
 }
 
-public class LCABinaryTree {
+public class LCA_Lowest_Common_Ancestor_BinaryTree {
 
   public static Node lca(Node root, Node a, Node b) {
     if (root == null) {

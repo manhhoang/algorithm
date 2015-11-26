@@ -64,7 +64,7 @@ import com.jd.algorithm.StdOut;
  * {@link SeparateChainingHashST}, and {@link LinearProbingHashST},
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
-public class BST<Key extends Comparable<Key>, Value> {
+public class BST_Binary_Search_Tree<Key extends Comparable<Key>, Value> {
 	private Node root; // root of BST
 
 	private class Node {
@@ -83,7 +83,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	/**
 	 * Initializes an empty symbol table.
 	 */
-	public BST() {
+	public BST_Binary_Search_Tree() {
 	}
 
 	/**
@@ -594,7 +594,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	 * Unit tests the <tt>BST</tt> data type.
 	 */
 	public static void main(String[] args) {
-		BST<String, Integer> st = new BST<String, Integer>();
+		BST_Binary_Search_Tree<String, Integer> st = new BST_Binary_Search_Tree<String, Integer>();
 		for (int i = 0; !StdIn.isEmpty(); i++) {
 			String key = StdIn.readString();
 			st.put(key, i);
