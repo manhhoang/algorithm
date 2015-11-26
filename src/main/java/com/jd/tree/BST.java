@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.tree;
 
 /******************************************************************************
  *  Compilation:  javac BST.java
@@ -26,6 +26,11 @@ package com.jd.algorithm;
  ******************************************************************************/
 
 import java.util.NoSuchElementException;
+
+import com.jd.algorithm.Queue;
+import com.jd.algorithm.ST;
+import com.jd.algorithm.StdIn;
+import com.jd.algorithm.StdOut;
 
 /**
  * The <tt>BST</tt> class represents an ordered symbol table of generic

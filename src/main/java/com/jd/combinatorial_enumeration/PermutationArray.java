@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.combinatorial_enumeration;
 
 public class PermutationArray {
 

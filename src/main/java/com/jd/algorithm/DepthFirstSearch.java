@@ -3,6 +3,8 @@ package com.jd.algorithm;
 import java.io.File;
 import java.io.IOException;
 
+import com.jd.graph.BreadthFirstPaths;
+
 /******************************************************************************
  * Compilation: javac DepthFirstSearch.java Execution: java DepthFirstSearch filename.txt s
  * Dependencies: Graph.java StdOut.java Data files: http://algs4.cs.princeton.edu/41graph/tinyG.txt

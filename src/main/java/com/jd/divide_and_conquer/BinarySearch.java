@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.divide_and_conquer;
 
 /******************************************************************************
  * Compilation: javac BinarySearch.java Execution: java BinarySearch whitelist.txt < input.txt
@@ -16,6 +16,9 @@ package com.jd.algorithm;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+
+import com.jd.algorithm.In;
+import com.jd.algorithm.StdOut;
 
 /**
  * The <tt>BinarySearch</tt> class provides a static method for binary searching for an integer in a

@@ -1,4 +1,6 @@
-package com.jd.algorithm;
+package com.jd.brute_force;
+
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
  * Compilation: javac Brute.java Execution: java Brute pattern text Dependencies: StdOut.java

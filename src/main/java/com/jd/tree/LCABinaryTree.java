@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.tree;
 
 class Node {
   public int data;
