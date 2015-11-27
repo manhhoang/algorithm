@@ -8,9 +8,11 @@
  *
  ******************************************************************************/
 
-package com.jd.algorithm;
+package com.jd.recursive_programming;
 
-public class Euclid {
+import com.jd.algorithm.StdOut;
+
+public class GCD_Euclid {
   // recursive implementation
   public static int gcd(int p, int q) {
     if (q == 0)
