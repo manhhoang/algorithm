@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.stack;
 
 /******************************************************************************
  * Compilation: javac Evaluate.java Execution: java Evaluate Dependencies: Stack.java
@@ -25,6 +25,8 @@ package com.jd.algorithm;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+
+import com.jd.algorithm.Stack;
 
 public class Evaluate {
 
