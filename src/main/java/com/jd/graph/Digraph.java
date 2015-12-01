@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.graph;
 
 /******************************************************************************
  *  Compilation:  javac Digraph.java
@@ -29,6 +29,11 @@ package com.jd.algorithm;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
+
+import com.jd.algorithm.Bag;
+import com.jd.algorithm.In;
+import com.jd.algorithm.Stack;
+import com.jd.algorithm.StdOut;
 
 /**
  *  The <tt>Digraph</tt> class represents a directed graph of vertices

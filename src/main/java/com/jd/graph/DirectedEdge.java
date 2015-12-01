@@ -1,4 +1,6 @@
-package com.jd.algorithm;
+package com.jd.graph;
+
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
  *  Compilation:  javac DirectedEdge.java

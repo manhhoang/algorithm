@@ -1,9 +1,10 @@
-package com.jd.algorithm;
+package com.jd.graph;
 
 import java.io.File;
 import java.io.IOException;
 
-import com.jd.graph.BreadthFirstPaths;
+import com.jd.algorithm.In;
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
  * Compilation: javac DepthFirstSearch.java Execution: java DepthFirstSearch filename.txt s

@@ -1,4 +1,9 @@
-package com.jd.algorithm;
+package com.jd.graph;
+
+import com.jd.algorithm.In;
+import com.jd.algorithm.ST;
+import com.jd.algorithm.StdIn;
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
  *  Compilation:  javac SymbolGraph.java

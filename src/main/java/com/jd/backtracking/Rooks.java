@@ -7,7 +7,7 @@
  *
  *
  *************************************************************************/
-package com.jd.algorithm;
+package com.jd.backtracking;
 
 public class Rooks {
   private int N; // N-by-N checkerboard

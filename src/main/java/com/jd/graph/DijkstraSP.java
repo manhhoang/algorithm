@@ -1,7 +1,12 @@
-package com.jd.algorithm;
+package com.jd.graph;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.jd.algorithm.In;
+import com.jd.algorithm.IndexMinPQ;
+import com.jd.algorithm.Stack;
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
  *  Compilation:  javac DijkstraSP.java
