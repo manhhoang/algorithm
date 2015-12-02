@@ -3,8 +3,12 @@ package com.jd.tree;
 class BTNode {
   int key;
   String name;
-  BTNode leftChild;
-  BTNode rightChild;
+  BTNode left;
+  BTNode right;
+
+  BTNode(int key) {
+    this.key = key;
+  }
 
   BTNode(int key, String name) {
     this.key = key;
@@ -45,19 +49,19 @@ public class BinaryTree {
         // the left side of the parent node
         if (key < focusNode.key) {
           // Switch focus to the left child
-          focusNode = focusNode.leftChild;
+          focusNode = focusNode.left;
           // If the left child has no children
           if (focusNode == null) {
             // then place the new node on the left of it
-            parent.leftChild = newNode;
+            parent.left = newNode;
             return; // All Done
           }
         } else { // If we get here put the node on the right
-          focusNode = focusNode.rightChild;
+          focusNode = focusNode.right;
           // If the right child has no children
           if (focusNode == null) {
             // then place the new node on the right of it
-            parent.rightChild = newNode;
+            parent.right = newNode;
             return; // All Done
           }
         }
@@ -71,26 +75,26 @@ public class BinaryTree {
   public void inOrderTraverseTree(BTNode focusNode) {
     if (focusNode != null) {
       // Traverse the left node
-      inOrderTraverseTree(focusNode.leftChild);
+      inOrderTraverseTree(focusNode.left);
       // Visit the currently focused on node
       System.out.println(focusNode);
       // Traverse the right node
-      inOrderTraverseTree(focusNode.rightChild);
+      inOrderTraverseTree(focusNode.right);
     }
   }
 
   public void preorderTraverseTree(BTNode focusNode) {
     if (focusNode != null) {
       System.out.println(focusNode);
-      preorderTraverseTree(focusNode.leftChild);
-      preorderTraverseTree(focusNode.rightChild);
+      preorderTraverseTree(focusNode.left);
+      preorderTraverseTree(focusNode.right);
     }
   }
 
   public void postOrderTraverseTree(BTNode focusNode) {
     if (focusNode != null) {
-      postOrderTraverseTree(focusNode.leftChild);
-      postOrderTraverseTree(focusNode.rightChild);
+      postOrderTraverseTree(focusNode.left);
+      postOrderTraverseTree(focusNode.right);
       System.out.println(focusNode);
     }
   }
@@ -104,10 +108,10 @@ public class BinaryTree {
       // If we should search to the left
       if (key < focusNode.key) {
         // Shift the focus Node to the left child
-        focusNode = focusNode.leftChild;
+        focusNode = focusNode.left;
       } else {
         // Shift the focus Node to the right child
-        focusNode = focusNode.rightChild;
+        focusNode = focusNode.right;
       }
       // The node wasn't found
       if (focusNode == null)
@@ -129,7 +133,7 @@ public class BinaryTree {
     // theTree.preorderTraverseTree(theTree.root);
     // theTree.postOrderTraverseTree(theTree.root);
     // Find the node with key 75
-    System.out.println("\nNode with the key 75");
+    System.out.println("Node with the key 75");
     System.out.println(theTree.findNode(75));
   }
 }
