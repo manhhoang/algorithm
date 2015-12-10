@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class BlockingQueueImp<E> implements BlockingQueue<E> {
-  private final E[] items;
+  private final E[] eles;
   private int popIndex;
   private int pushIndex;
   private int count;
@@ -16,14 +16,10 @@ public class BlockingQueueImp<E> implements BlockingQueue<E> {
   public BlockingQueueImp(int cap) {
     if (cap <= 0)
       throw new IllegalArgumentException();
-    this.items = (E[]) new Object[cap];
+    this.eles = (E[]) new Object[cap];
     lock = new ReentrantLock(false);
     empty = lock.newCondition();
     full = lock.newCondition();
-  }
-
-  final int inc(int i) {
-    return (++i == items.length) ? 0 : i;
   }
 
   public Iterator<E> iterator() {
@@ -33,19 +29,19 @@ public class BlockingQueueImp<E> implements BlockingQueue<E> {
   public void push(E e) throws InterruptedException {
     if (e == null)
       throw new NullPointerException();
-    final E[] items = this.items;
+    final E[] eles = this.eles;
     final ReentrantLock lock = this.lock;
     lock.lockInterruptibly();
     try {
       try {
-        while (count == items.length)
+        while (count == eles.length)
           full.await();
       } catch (InterruptedException ie) {
         full.signal();
         throw ie;
       }
-      items[pushIndex] = e;
-      pushIndex = inc(pushIndex);
+      eles[pushIndex] = e;
+      pushIndex = ++pushIndex == eles.length ? 0 : pushIndex;
       ++count;
       empty.signal();
     } finally {
@@ -64,10 +60,10 @@ public class BlockingQueueImp<E> implements BlockingQueue<E> {
         empty.signal();
         throw ie;
       }
-      final E[] items = this.items;
-      E x = items[popIndex];
-      items[popIndex] = null;
-      popIndex = inc(popIndex);
+      final E[] eles = this.eles;
+      E x = eles[popIndex];
+      eles[popIndex] = null;
+      popIndex = ++popIndex == eles.length ? 0 : popIndex;
       --count;
       full.signal();
       return x;
@@ -78,7 +74,7 @@ public class BlockingQueueImp<E> implements BlockingQueue<E> {
 
   @SuppressWarnings({"rawtypes"})
   public static void main(String[] args) throws InterruptedException {
-    BlockingQueue bq = new BlockingQueueImp(1);
+    BlockingQueue bq = new BlockingQueueImp(2);
 
     Producer producer = new Producer(bq);
     Consumer consumer = new Consumer(bq);
@@ -103,10 +99,12 @@ class Producer implements Runnable {
     try {
       System.out.println("Push: 1");
       bq.push("1");
-      // Thread.sleep(1000);
-      // bq.push("2");
-      // Thread.sleep(1000);
-      // bq.push("3");
+      Thread.sleep(1000);
+      System.out.println("Push: 2");
+      bq.push("2");
+      Thread.sleep(1000);
+      System.out.println("Push: 3");
+      bq.push("3");
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -131,6 +129,7 @@ class Consumer implements Runnable {
   public void run() {
     try {
       System.out.println("Pop: " + queue.pop());
+      // System.out.println("Pop: " + queue.pop());
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
