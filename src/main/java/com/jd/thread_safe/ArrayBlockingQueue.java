@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class BlockingQueueImp<E> implements BlockingQueue<E> {
+public class ArrayBlockingQueue<E> implements BlockingQueue<E> {
   private final E[] eles;
   private int popIndex;
   private int pushIndex;
@@ -13,7 +13,7 @@ public class BlockingQueueImp<E> implements BlockingQueue<E> {
   private final Condition empty;
   private final Condition full;
 
-  public BlockingQueueImp(int cap) {
+  public ArrayBlockingQueue(int cap) {
     if (cap <= 0)
       throw new IllegalArgumentException();
     this.eles = (E[]) new Object[cap];
@@ -74,7 +74,7 @@ public class BlockingQueueImp<E> implements BlockingQueue<E> {
 
   @SuppressWarnings({"rawtypes"})
   public static void main(String[] args) throws InterruptedException {
-    BlockingQueue bq = new BlockingQueueImp(2);
+    BlockingQueue bq = new ArrayBlockingQueue(2);
 
     Producer producer = new Producer(bq);
     Consumer consumer = new Consumer(bq);

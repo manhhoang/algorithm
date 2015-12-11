@@ -9,7 +9,7 @@ public class BlockingQueueTest {
   @Test
   public void test1() throws InterruptedException {
     @SuppressWarnings("rawtypes")
-    BlockingQueue bq = new BlockingQueueImp(1);
+    BlockingQueue bq = new ArrayBlockingQueue(1);
     bq.push("Test");
     Assert.assertEquals(bq.pop(), "Test");
   }
@@ -18,7 +18,7 @@ public class BlockingQueueTest {
   @Test
   public void test2() throws InterruptedException {
     @SuppressWarnings("rawtypes")
-    BlockingQueue bq = new BlockingQueueImp(1);
+    BlockingQueue bq = new ArrayBlockingQueue(1);
     try {
       bq.push(null);
     } catch (Throwable expected) {
@@ -30,7 +30,7 @@ public class BlockingQueueTest {
   @Test
   public void test3() throws InterruptedException {
     @SuppressWarnings("rawtypes")
-    BlockingQueue bq = new BlockingQueueImp(2);
+    BlockingQueue bq = new ArrayBlockingQueue(2);
     bq.push("1");
     bq.push("2");
     Assert.assertEquals(bq.pop(), "1");
