@@ -1,0 +1,6 @@
+This exercise is called "Complementary Pairs" and given an array A and an integer K, how many pairs of A, sum to K.
+
+For example, with this input:
+
+k = 6 a = [1, 8, -3, 0, 1, 3, -2, 4, 5] 
+we would have 7 possibilities, like i, j = (5, 5) to add 3 + 3, then the pairs that add 1 + 5 (and the reverse), etc.
