@@ -1,6 +1,6 @@
 package com.jd.combinatorial_enumeration;
 
-public class Kadane_LargestSumContiguousSubarray {
+public class LargestSumContiguousSubarray_Kadane {
 
   public static void main(String[] args) {
     int[] a = {3, -1, -1, -1, -1, -1, 2, 0, 0, 0};
