@@ -1,16 +1,16 @@
 package com.jd.tree;
 
-class Node {
-  public int data;
-  public Node right;
-  public Node left;
-
-  public Node(int data) {
-    this.data = data;
-  }
-}
-
 public class LCA_Lowest_Common_Ancestor_BinaryTree {
+
+  private static class Node {
+    public int data;
+    public Node right;
+    public Node left;
+
+    public Node(int data) {
+      this.data = data;
+    }
+  }
 
   public static Node lca(Node root, Node a, Node b) {
     if (root == null) {

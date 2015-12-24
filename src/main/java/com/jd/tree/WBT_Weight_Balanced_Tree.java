@@ -3,29 +3,29 @@ package com.jd.tree;
 import java.io.File;
 import java.util.Scanner;
 
-class TreeNode {
-  int key;
-  int val;
-  TreeNode left;
-  TreeNode right;
-
-  TreeNode(int k) {
-    key = k;
-  }
-
-}
-
 public class WBT_Weight_Balanced_Tree {
 
-  private static void addNode(TreeNode node, int key, int weightLeft, int childKeyLeft,
+  static class Node {
+    int key;
+    int val;
+    Node left;
+    Node right;
+
+    Node(int k) {
+      key = k;
+    }
+
+  }
+
+  private static void addNode(Node node, int key, int weightLeft, int childKeyLeft,
       int weightRight, int childKeyRight) {
     if (childKeyLeft != -1) {
-      TreeNode childLeft = new TreeNode(childKeyLeft);
+      Node childLeft = new Node(childKeyLeft);
       node.left = childLeft;
     }
 
     if (childKeyRight != -1) {
-      TreeNode childRight = new TreeNode(childKeyRight);
+      Node childRight = new Node(childKeyRight);
       node.right = childRight;
     }
   }
@@ -38,7 +38,7 @@ public class WBT_Weight_Balanced_Tree {
 
     int N = sc.nextInt();
     sc.nextLine();
-    TreeNode root = new TreeNode(0);
+    Node root = new Node(0);
     for (int i = 0; i < N; i++) {
       String[] lineLeft = sc.nextLine().split(" ");
       String[] lineRight = sc.nextLine().split(" ");

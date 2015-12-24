@@ -1,46 +1,46 @@
 package com.jd.tree;
 
-class BTNode {
-  int key;
-  String name;
-  BTNode left;
-  BTNode right;
-
-  BTNode(int key) {
-    this.key = key;
-  }
-
-  BTNode(int key, String name) {
-    this.key = key;
-    this.name = name;
-  }
-
-  public String toString() {
-    return name + " has the key " + key;
-    /*
-     * return name + " has the key " + key + "\nLeft Child: " + leftChild + "\nRight Child: " +
-     * rightChild + "\n";
-     */
-  }
-
-}
-
 public class BinaryTree {
 
-  BTNode root;
+  static class Node {
+    int key;
+    String name;
+    Node left;
+    Node right;
+
+    Node(int key) {
+      this.key = key;
+    }
+
+    Node(int key, String name) {
+      this.key = key;
+      this.name = name;
+    }
+
+    public String toString() {
+      return name + " has the key " + key;
+      /*
+       * return name + " has the key " + key + "\nLeft Child: " + leftChild + "\nRight Child: " +
+       * rightChild + "\n";
+       */
+    }
+
+  }
+
+  Node root;
 
   public void addNode(int key, String name) {
     // Create a new Node and initialize it
-    BTNode newNode = new BTNode(key, name);
+    Node newNode = new Node(key, name);
     // If there is no root this becomes root
     if (root == null) {
       root = newNode;
     } else {
       // Set root as the Node we will start
       // with as we traverse the tree
-      BTNode focusNode = root;
+      Node focusNode = root;
       // Future parent for our new Node
-      BTNode parent;
+      Node parent;
       while (true) {
         // root is the top parent so we start
         // there
@@ -72,7 +72,7 @@ public class BinaryTree {
   // All nodes are visited in ascending order
   // Recursion is used to go to one node and
   // then go to its child nodes and so forth
-  public void inOrderTraverseTree(BTNode focusNode) {
+  public void inOrderTraverseTree(Node focusNode) {
     if (focusNode != null) {
       // Traverse the left node
       inOrderTraverseTree(focusNode.left);
@@ -83,7 +83,7 @@ public class BinaryTree {
     }
   }
 
-  public void preorderTraverseTree(BTNode focusNode) {
+  public void preorderTraverseTree(Node focusNode) {
     if (focusNode != null) {
       System.out.println(focusNode);
       preorderTraverseTree(focusNode.left);
@@ -91,7 +91,7 @@ public class BinaryTree {
     }
   }
 
-  public void postOrderTraverseTree(BTNode focusNode) {
+  public void postOrderTraverseTree(Node focusNode) {
     if (focusNode != null) {
       postOrderTraverseTree(focusNode.left);
       postOrderTraverseTree(focusNode.right);
@@ -99,9 +99,9 @@ public class BinaryTree {
     }
   }
 
-  public BTNode findNode(int key) {
+  public Node findNode(int key) {
     // Start at the top of the tree
-    BTNode focusNode = root;
+    Node focusNode = root;
     // While we haven't found the Node
     // keep looking
     while (focusNode.key != key) {

@@ -5,13 +5,29 @@ import java.util.Queue;
 
 public class BFS {
 
-  public static void levelOrderQueue(BTNode root) {
-    Queue<BTNode> q = new LinkedList<BTNode>();
+  static class Node {
+    int key;
+    String name;
+    Node left;
+    Node right;
+
+    Node(int key) {
+      this.key = key;
+    }
+
+    Node(int key, String name) {
+      this.key = key;
+      this.name = name;
+    }
+  }
+
+  public static void levelOrderQueue(Node root) {
+    Queue<Node> q = new LinkedList<Node>();
     if (root == null)
       return;
     q.add(root);
     while (!q.isEmpty()) {
-      BTNode n = (BTNode) q.remove();
+      Node n = (Node) q.remove();
       System.out.print(" " + n.key);
       if (n.left != null)
         q.add(n.left);
@@ -21,13 +37,13 @@ public class BFS {
   }
 
   public static void main(String[] args) throws java.lang.Exception {
-    BTNode root = new BTNode(5);
-    root.left = new BTNode(10);
-    root.right = new BTNode(15);
-    root.left.left = new BTNode(20);
-    root.left.right = new BTNode(25);
-    root.right.left = new BTNode(30);
-    root.right.right = new BTNode(35);
+    Node root = new Node(5);
+    root.left = new Node(10);
+    root.right = new Node(15);
+    root.left.left = new Node(20);
+    root.left.right = new Node(25);
+    root.right.left = new Node(30);
+    root.right.right = new Node(35);
 
     System.out.println("Breadth First Search : ");
     levelOrderQueue(root);
