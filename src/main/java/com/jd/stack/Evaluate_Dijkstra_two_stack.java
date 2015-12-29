@@ -28,7 +28,7 @@ import java.util.Scanner;
 
 import com.jd.algorithm.Stack;
 
-public class Evaluate {
+public class Evaluate_Dijkstra_two_stack {
 
   public static void main(String[] args) throws IOException {
     String currentPath = new File(".").getCanonicalPath();
