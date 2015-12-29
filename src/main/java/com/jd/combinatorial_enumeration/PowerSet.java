@@ -1,6 +1,7 @@
 package com.jd.combinatorial_enumeration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -57,6 +58,9 @@ public class PowerSet {
     ArrayList<String> ps = new ArrayList<>();
     getpowerset(a, a.length, ps);
     ps.forEach((x) -> System.out.println(x));
-  }
 
+    List<String> list = new ArrayList<>(Arrays.asList("a", "b", "c"));
+    List<List<String>> ans = powerset(list);
+    ans.forEach((x) -> System.out.println(x));
+  }
 }
