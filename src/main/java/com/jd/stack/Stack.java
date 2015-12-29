@@ -1,7 +1,10 @@
-package com.jd.algorithm;
+package com.jd.stack;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import com.jd.algorithm.StdIn;
+import com.jd.algorithm.StdOut;
 
 public class Stack<Item> implements Iterable<Item> {
   private int N; // size of the stack

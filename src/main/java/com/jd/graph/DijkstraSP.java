@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import com.jd.algorithm.In;
 import com.jd.algorithm.IndexMinPQ;
-import com.jd.algorithm.Stack;
 import com.jd.algorithm.StdOut;
+import com.jd.stack.Stack;
 
 /******************************************************************************
  *  Compilation:  javac DijkstraSP.java

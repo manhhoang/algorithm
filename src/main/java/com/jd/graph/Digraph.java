@@ -32,8 +32,8 @@ import java.util.NoSuchElementException;
 
 import com.jd.algorithm.Bag;
 import com.jd.algorithm.In;
-import com.jd.algorithm.Stack;
 import com.jd.algorithm.StdOut;
+import com.jd.stack.Stack;
 
 /**
  *  The <tt>Digraph</tt> class represents a directed graph of vertices

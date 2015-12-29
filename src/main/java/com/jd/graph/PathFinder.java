@@ -3,9 +3,9 @@ package com.jd.graph;
 import com.jd.algorithm.In;
 import com.jd.algorithm.Queue;
 import com.jd.algorithm.ST;
-import com.jd.algorithm.Stack;
 import com.jd.algorithm.StdIn;
 import com.jd.algorithm.StdOut;
+import com.jd.stack.Stack;
 
 /******************************************************************************
  *  Compilation:  javac PathFinder.java
