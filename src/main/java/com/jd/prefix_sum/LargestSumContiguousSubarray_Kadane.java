@@ -1,4 +1,4 @@
-package com.jd.combinatorial_enumeration;
+package com.jd.prefix_sum;
 
 public class LargestSumContiguousSubarray_Kadane {
 
