@@ -58,6 +58,8 @@ public class PowerSet {
     ArrayList<String> ps = new ArrayList<>();
     getpowerset(a, a.length, ps);
     ps.forEach((x) -> System.out.println(x));
+    
+    System.out.println();
 
     List<String> list = new ArrayList<>(Arrays.asList("a", "b", "c"));
     List<List<String>> ans = powerset(list);
