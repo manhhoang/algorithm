@@ -66,7 +66,7 @@ public final class StdIn {
 
   /*** end: section (1 of 2) of code duplicated from In to StdIn. */
 
-  private static Scanner scanner;
+  public static Scanner scanner;
 
   // it doesn't make sense to instantiate this class
   private StdIn() {
