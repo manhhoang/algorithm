@@ -15,7 +15,7 @@ public class ArrayIndexOf {
         while (++i <= max && source[i] != first);
       }
 
-      /* Found first item, now look at the rest of v2 */
+      /* Found first item, now look at the rest of array */
       if (i <= max) {
         int j = i + 1;
         int end = j + targetCount - 1;
@@ -62,5 +62,15 @@ public class ArrayIndexOf {
   @Test
   public void test6() {
     Assert.assertEquals(-1, solution(new int[] {1, 2, 3}, new int[] {1, 2, 3, 4}));
+  }
+
+  @Test
+  public void test7() {
+    Assert.assertEquals(-1, solution(new int[] {1, 2, 3}, new int[] {1, 2, 3, 4, 5}));
+  }
+
+  @Test
+  public void test8() {
+    Assert.assertEquals(2, solution(new int[] {2, 3, 2, 4, 5}, new int[] {2, 4}));
   }
 }
