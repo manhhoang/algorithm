@@ -16,7 +16,10 @@ package com.jd.suffix_array;
  *
  ******************************************************************************/
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import com.jd.algorithm.StdIn;
 import com.jd.algorithm.StdOut;
@@ -193,8 +196,16 @@ public class SuffixArray {
 
   /**
    * Unit tests the <tt>SuffixArray</tt> data type.
+   * 
+   * @throws IOException
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
+    String path = new File(".").getCanonicalPath();
+    String fileName = path + "/src/cs/tinyTale.txt"; // mobydick.txt
+    File file = new File(fileName);
+    Scanner sc = new Scanner(file);
+    StdIn.scanner = sc;
+
     String s = StdIn.readAll().replaceAll("\\s+", " ").trim();
     SuffixArray suffix = new SuffixArray(s);
 

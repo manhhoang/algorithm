@@ -82,7 +82,7 @@ public class LongestRepeatedSubstring {
    */
   public static void main(String[] args) throws IOException {
     String path = new File(".").getCanonicalPath();
-    String fileName = path + "/src/cs/tinyTale.txt";
+    String fileName = path + "/src/cs/tinyTale.txt"; // mobydick.txt
     File file = new File(fileName);
     Scanner sc = new Scanner(file);
     StdIn.scanner = sc;
