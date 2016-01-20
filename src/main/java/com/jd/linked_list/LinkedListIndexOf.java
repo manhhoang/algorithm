@@ -83,7 +83,6 @@ public class LinkedListIndexOf {
     for (int i = 0; i < subarr.length; i++) {
       sublist = insert(sublist, subarr[i]);
     }
-
     return indexOf(list, sublist);
   }
 
