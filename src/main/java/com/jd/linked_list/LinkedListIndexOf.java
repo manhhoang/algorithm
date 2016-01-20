@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class LinkedListIndexOf {
 
-  static class LinkedList {
+  private static class LinkedList {
     int val;
     LinkedList next;
 
