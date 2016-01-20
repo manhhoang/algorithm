@@ -79,4 +79,9 @@ public class ReverseLinkedList {
     Assert.assertArrayEquals(new int[] {1, 2}, solution(new int[] {2, 1}));
   }
 
+  @Test
+  public void test5() {
+    Assert.assertArrayEquals(new int[] {3, 2, 1}, solution(new int[] {1, 2, 3}));
+  }
+
 }
