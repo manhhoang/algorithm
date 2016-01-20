@@ -39,8 +39,7 @@ public class EvaluateDeluxe {
   }
 
   public static void main(String[] args) {
-
-    String str = "(1 + 2) * 3";
+    String str = "3 + 5 * 6 - 7 * ( 8 + 5 )";
 
     // precedence order of operators
     TreeMap<String, Integer> precedence = new TreeMap<String, Integer>();
