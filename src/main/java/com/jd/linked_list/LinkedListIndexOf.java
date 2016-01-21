@@ -5,17 +5,17 @@ import org.junit.Test;
 
 public class LinkedListIndexOf {
 
-  private static class LinkedList {
-    int val;
-    LinkedList next;
+  private static class LinkedListNode {
+    String val;
+    LinkedListNode next;
 
-    LinkedList(int val) {
-      this.val = val;
+    LinkedListNode(String node_value) {
+      val = node_value;
       next = null;
     }
   }
 
-  private static int count(LinkedList head) {
+  private static int count(LinkedListNode head) {
     int count = 1;
     while (head.next != null) {
       head = head.next;
@@ -24,34 +24,31 @@ public class LinkedListIndexOf {
     return count;
   }
 
-  static int indexOf(LinkedList source, LinkedList target) {
-    LinkedList first = target;
-    int sourceCount = count(source);
-    int targetCount = count(target);
+  static int find(LinkedListNode list, LinkedListNode sublist) {
+    LinkedListNode first = sublist;
+    int sourceCount = count(list);
+    int targetCount = count(sublist);
     int max = (sourceCount - targetCount);
 
     for (int i = 0; i <= max; i++) {
-      /* Look for first item. */
-      if (source.val != first.val) {
-        while (source.next != null && source.val != first.val) {
-          source = source.next;
+      if (list.val != first.val) {
+        while (list.next != null && list.val != first.val) {
+          list = list.next;
           i++;
         }
       }
 
-      /* Found first item, now look at the rest of list */
       if (i <= max) {
         int j = i + 1;
         int end = j + targetCount - 1;
-        while (source.next != null && target.next != null && j < end
-            && source.next.val == target.next.val) {
+        while (list.next != null && sublist.next != null && j < end
+            && list.next.val == sublist.next.val) {
           j++;
-          source = source.next;
-          target = target.next;
+          list = list.next;
+          sublist = sublist.next;
         }
-        source = source.next;
+        list = list.next;
         if (j == end) {
-          /* Found whole array. */
           return i;
         }
       }
@@ -59,70 +56,83 @@ public class LinkedListIndexOf {
     return -1;
   }
 
-  public static LinkedList insert(LinkedList head, int val) {
+  public static LinkedListNode insert(LinkedListNode head, String val) {
     if (head == null) {
-      head = new LinkedList(val);
+      head = new LinkedListNode(val);
     } else {
-      LinkedList end = head;
+      LinkedListNode end = head;
       while (end.next != null) {
         end = end.next;
       }
-      LinkedList node = new LinkedList(val);
+      LinkedListNode node = new LinkedListNode(val);
       end.next = node;
     }
     return head;
   }
 
-  public static int solution(int[] arr, int[] subarr) {
-    LinkedList list = null;
+  public static int solution(String[] arr, String[] subarr) {
+    LinkedListNode list = null;
     for (int i = 0; i < arr.length; i++) {
       list = insert(list, arr[i]);
     }
 
-    LinkedList sublist = null;
+    LinkedListNode sublist = null;
     for (int i = 0; i < subarr.length; i++) {
       sublist = insert(sublist, subarr[i]);
     }
-    return indexOf(list, sublist);
+    return find(list, sublist);
   }
 
   @Test
   public void test1() {
-    Assert.assertEquals(1, solution(new int[] {1, 2, 3, 4, 5}, new int[] {2, 3, 4}));
+    Assert.assertEquals(1, solution(new String[] {"1", "2", "3", "4", "5"}, new String[] {
+        "2", "3", "4"}));
   }
 
   @Test
   public void test2() {
-    Assert.assertEquals(-1, solution(new int[] {1, 2, 3, 4, 5}, new int[] {2, 5, 4}));
+    Assert.assertEquals(-1, solution(new String[] {"1", "2", "3", "4", "5"}, new String[] {
+        "2", "5", "4"}));
   }
 
   @Test
   public void test3() {
-    Assert.assertEquals(3, solution(new int[] {1, 2, 3, 4, 5}, new int[] {4, 5}));
+    Assert.assertEquals(3,
+        solution(new String[] {"1", "2", "3", "4", "5"}, new String[] {"4", "5"}));
   }
 
   @Test
   public void test4() {
-    Assert.assertEquals(0, solution(new int[] {1, 2, 3, 4, 5}, new int[] {1, 2}));
+    Assert.assertEquals(0,
+        solution(new String[] {"1", "2", "3", "4", "5"}, new String[] {"1", "2"}));
   }
 
   @Test
   public void test5() {
-    Assert.assertEquals(1, solution(new int[] {1, 2, 3, 4, 5}, new int[] {2}));
+    Assert.assertEquals(1, solution(new String[] {"1", "2", "3", "4", "5"}, new String[] {"2"}));
   }
 
   @Test
   public void test6() {
-    Assert.assertEquals(-1, solution(new int[] {1, 2, 3}, new int[] {1, 2, 3, 4}));
+    Assert.assertEquals(-1, solution(new String[] {"1", "2", "3"},
+        new String[] {"1", "2", "3", "4"}));
   }
 
   @Test
   public void test7() {
-    Assert.assertEquals(-1, solution(new int[] {1, 2, 3}, new int[] {1, 2, 3, 4, 5}));
+    Assert.assertEquals(-1, solution(new String[] {"1", "2", "3"}, new String[] {
+        "1", "2", "3", "4", "5"}));
   }
 
   @Test
   public void test8() {
-    Assert.assertEquals(2, solution(new int[] {2, 3, 2, 4, 5}, new int[] {2, 4}));
+    Assert.assertEquals(2,
+        solution(new String[] {"2", "3", "2", "4", "5"}, new String[] {"2", "4"}));
+  }
+
+  @Test
+  public void test9() {
+    Assert.assertEquals(2, solution(new String[] {"1", "2", "3", "4", "5"}, new String[] {
+        "3", "4", "5"}));
   }
 }
