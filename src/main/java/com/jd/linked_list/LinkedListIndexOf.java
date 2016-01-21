@@ -31,18 +31,16 @@ public class LinkedListIndexOf {
     int max = (sourceCount - targetCount);
 
     for (int i = 0; i <= max; i++) {
-      if (list.val != first.val) {
-        while (list.next != null && list.val != first.val) {
-          list = list.next;
-          i++;
-        }
+      while (list.next != null && !list.val.equals(first.val)) {
+        list = list.next;
+        i++;
       }
 
       if (i <= max) {
         int j = i + 1;
         int end = j + targetCount - 1;
         while (list.next != null && sublist.next != null && j < end
-            && list.next.val == sublist.next.val) {
+            && list.next.val.equals(sublist.next.val)) {
           j++;
           list = list.next;
           sublist = sublist.next;
