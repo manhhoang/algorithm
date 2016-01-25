@@ -33,12 +33,11 @@ public class ReverseLinkedList {
     if (head == null) {
       head = new LinkedList(val);
     } else {
-      LinkedList end = head;
-      while (end.next != null) {
-        end = end.next;
+      LinkedList current = head;
+      while (current.next != null) {
+        current = current.next;
       }
-      LinkedList node = new LinkedList(val);
-      end.next = node;
+      current.next = new LinkedList(val);
     }
     return head;
   }

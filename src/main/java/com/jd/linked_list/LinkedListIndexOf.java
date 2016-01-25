@@ -58,12 +58,11 @@ public class LinkedListIndexOf {
     if (head == null) {
       head = new LinkedListNode(val);
     } else {
-      LinkedListNode end = head;
-      while (end.next != null) {
-        end = end.next;
+      LinkedListNode current = head;
+      while (current.next != null) {
+        current = current.next;
       }
-      LinkedListNode node = new LinkedListNode(val);
-      end.next = node;
+      current.next = new LinkedListNode(val);
     }
     return head;
   }
