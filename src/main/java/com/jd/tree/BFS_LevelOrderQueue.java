@@ -3,7 +3,7 @@ package com.jd.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFS {
+public class BFS_LevelOrderQueue {
 
   static class Node {
     int key;
