@@ -1,4 +1,4 @@
-package com.jd.algorithm;
+package com.jd.dp;
 
 public class PrimeSieveOfAtkin {
   /** Function to calculate all primes less than n **/

@@ -22,7 +22,7 @@
  *
  ******************************************************************************/
 
-package com.jd.algorithm;
+package com.jd.dp;
 
 import java.util.Arrays;
 
