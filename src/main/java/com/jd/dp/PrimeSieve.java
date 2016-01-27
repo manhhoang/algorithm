@@ -24,18 +24,15 @@
 
 package com.jd.dp;
 
-import java.util.Arrays;
-
 public class PrimeSieve {
   public static void main(String[] args) {
     int N = 25;
 
     // initially assume all integers are prime
     boolean[] isPrime = new boolean[N + 1];
-    Arrays.fill(isPrime, true);
-    // for (int i = 2; i <= N; i++) {
-    // isPrime[i] = true;
-    // }
+    for (int i = 2; i <= N; i++) {
+      isPrime[i] = true;
+    }
 
     // mark non-primes <= N using Sieve of Eratosthenes
     for (int i = 2; i * i <= N; i++) {
