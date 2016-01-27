@@ -1,4 +1,10 @@
-package com.jd.algorithm;
+package com.jd.algorithm.union_find;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
  * Compilation: javac WeightedQuickUnionUF.java Execution: java WeightedQuickUnionUF < input.txt
@@ -165,13 +171,19 @@ public class WeightedQuickUnionUF {
    * Reads in a sequence of pairs of integers (between 0 and N-1) from standard input, where each
    * integer represents some object; if the sites are in different components, merge the two
    * components and print the pair to standard output.
+   * 
+   * @throws IOException
    */
-  public static void main(String[] args) {
-    int N = StdIn.readInt();
+  public static void main(String[] args) throws IOException {
+    String currentPath = new File(".").getCanonicalPath();
+    String fileName = currentPath + "/src/cs/tinyUF.txt";
+    File file = new File(fileName);
+    Scanner sc = new Scanner(file);
+    int N = sc.nextInt();
     WeightedQuickUnionUF uf = new WeightedQuickUnionUF(N);
-    while (!StdIn.isEmpty()) {
-      int p = StdIn.readInt();
-      int q = StdIn.readInt();
+    while (sc.hasNext()) {
+      int p = sc.nextInt();
+      int q = sc.nextInt();
       if (uf.connected(p, q))
         continue;
       uf.union(p, q);

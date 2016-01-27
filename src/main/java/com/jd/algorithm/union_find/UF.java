@@ -1,15 +1,24 @@
-package com.jd.algorithm;
+package com.jd.algorithm.union_find;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+import com.jd.algorithm.StdOut;
 
 /******************************************************************************
- * Compilation: javac QuickFindUF.java Execution: java QuickFindUF < input.txt Dependencies:
- * StdIn.java StdOut.java
+ * Compilation: javac UF.java Execution: java UF < input.txt Dependencies: StdIn.java StdOut.java
+ * Data files: http://algs4.cs.princeton.edu/15uf/tinyUF.txt
+ * http://algs4.cs.princeton.edu/15uf/mediumUF.txt http://algs4.cs.princeton.edu/15uf/largeUF.txt
  *
- * Quick-find algorithm.
+ * Weighted quick-union by rank with path compression by halving.
+ *
+ * % java UF < tinyUF.txt 4 3 3 8 6 5 9 4 2 1 5 0 7 2 6 1 2 components
  *
  ******************************************************************************/
 
 /**
- * The <tt>QuickFindUF</tt> class represents a <em>union-find data type</em> (also known as the
+ * The <tt>UF</tt> class represents a <em>union-find data type</em> (also known as the
  * <em>disjoint-sets data type</em>). It supports the <em>union</em> and <em>find</em> operations,
  * along with a <em>connected</em> operation for determining whether two sites are in the same
  * component and a <em>count</em> operation that returns the total number of components.
@@ -55,11 +64,13 @@ package com.jd.algorithm;
  * a call to <em>union</em>&mdash;it cannot change during a call to <em>find</em>,
  * <em>connected</em>, or <em>count</em>.
  * <p>
- * This implementation uses quick find. Initializing a data structure with <em>N</em> sites takes
- * linear time. Afterwards, the <em>find</em>, <em>connected</em>, and <em>count</em> operations
- * take constant time but the <em>union</em> operation takes linear time. For alternate
- * implementations of the same API, see {@link UF}, {@link QuickUnionUF}, and
- * {@link WeightedQuickUnionUF}.
+ * This implementation uses weighted quick union by rank with path compression by halving.
+ * Initializing a data structure with <em>N</em> sites takes linear time. Afterwards, the
+ * <em>union</em>, <em>find</em>, and <em>connected</em> operations take logarithmic time (in the
+ * worst case) and the <em>count</em> operation takes constant time. Moreover, the amortized time
+ * per <em>union</em>, <em>find</em>, and <em>connected</em> operation has inverse Ackermann
+ * complexity. For alternate implementations of the same API, see {@link QuickUnionUF},
+ * {@link QuickFindUF}, and {@link WeightedQuickUnionUF}.
  *
  * <p>
  * For additional documentation, see <a href="http://algs4.cs.princeton.edu/15uf">Section 1.5</a> of
@@ -69,8 +80,10 @@ package com.jd.algorithm;
  * @author Kevin Wayne
  */
 
-public class QuickFindUF {
-  private int[] id; // id[i] = component identifier of i
+public class UF {
+
+  private int[] parent; // parent[i] = parent of i
+  private byte[] rank; // rank[i] = rank of subtree rooted at i (never more than 31)
   private int count; // number of components
 
   /**
@@ -80,20 +93,16 @@ public class QuickFindUF {
    * @param N the number of sites
    * @throws IllegalArgumentException if <tt>N &lt; 0</tt>
    */
-  public QuickFindUF(int N) {
+  public UF(int N) {
+    if (N < 0)
+      throw new IllegalArgumentException();
     count = N;
-    id = new int[N];
-    for (int i = 0; i < N; i++)
-      id[i] = i;
-  }
-
-  /**
-   * Returns the number of components.
-   *
-   * @return the number of components (between <tt>1</tt> and <tt>N</tt>)
-   */
-  public int count() {
-    return count;
+    parent = new int[N];
+    rank = new byte[N];
+    for (int i = 0; i < N; i++) {
+      parent[i] = i;
+      rank[i] = 0;
+    }
   }
 
   /**
@@ -105,15 +114,20 @@ public class QuickFindUF {
    */
   public int find(int p) {
     validate(p);
-    return id[p];
+    while (p != parent[p]) {
+      parent[p] = parent[parent[p]]; // path compression by halving
+      p = parent[p];
+    }
+    return p;
   }
 
-  // validate that p is a valid index
-  private void validate(int p) {
-    int N = id.length;
-    if (p < 0 || p >= N) {
-      throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (N - 1));
-    }
+  /**
+   * Returns the number of components.
+   *
+   * @return the number of components (between <tt>1</tt> and <tt>N</tt>)
+   */
+  public int count() {
+    return count;
   }
 
   /**
@@ -127,9 +141,7 @@ public class QuickFindUF {
    *           <tt>0 &le; q &lt; N</tt>
    */
   public boolean connected(int p, int q) {
-    validate(p);
-    validate(q);
-    return id[p] == id[q];
+    return find(p) == find(q);
   }
 
   /**
@@ -142,30 +154,49 @@ public class QuickFindUF {
    *           <tt>0 &le; q &lt; N</tt>
    */
   public void union(int p, int q) {
-    int pID = id[p]; // needed for correctness
-    int qID = id[q]; // to reduce the number of array accesses
-
-    // p and q are already in the same component
-    if (pID == qID)
+    int rootP = find(p);
+    int rootQ = find(q);
+    if (rootP == rootQ)
       return;
 
-    for (int i = 0; i < id.length; i++)
-      if (id[i] == pID)
-        id[i] = qID;
+    // make root of smaller rank point to root of larger rank
+    if (rank[rootP] < rank[rootQ])
+      parent[rootP] = rootQ;
+    else if (rank[rootP] > rank[rootQ])
+      parent[rootQ] = rootP;
+    else {
+      parent[rootQ] = rootP;
+      rank[rootP]++;
+    }
     count--;
   }
 
+  // validate that p is a valid index
+  private void validate(int p) {
+    int N = parent.length;
+    if (p < 0 || p >= N) {
+      throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (N - 1));
+    }
+  }
+
   /**
-   * Reads in a sequence of pairs of integers (between 0 and N-1) from standard input, where each
-   * integer represents some site; if the sites are in different components, merge the two
-   * components and print the pair to standard output.
+   * Reads in a an integer <tt>N</tt> and a sequence of pairs of integers (between <tt>0</tt> and
+   * <tt>N-1</tt>) from standard input, where each integer in the pair represents some site; if the
+   * sites are in different components, merge the two components and print the pair to standard
+   * output.
+   * 
+   * @throws IOException
    */
-  public static void main(String[] args) {
-    int N = StdIn.readInt();
-    QuickFindUF uf = new QuickFindUF(N);
-    while (!StdIn.isEmpty()) {
-      int p = StdIn.readInt();
-      int q = StdIn.readInt();
+  public static void main(String[] args) throws IOException {
+    String currentPath = new File(".").getCanonicalPath();
+    String fileName = currentPath + "/src/cs/tinyUF.txt";
+    File file = new File(fileName);
+    Scanner sc = new Scanner(file);
+    int N = sc.nextInt();
+    UF uf = new UF(N);
+    while (sc.hasNext()) {
+      int p = sc.nextInt();
+      int q = sc.nextInt();
       if (uf.connected(p, q))
         continue;
       uf.union(p, q);
@@ -173,5 +204,4 @@ public class QuickFindUF {
     }
     StdOut.println(uf.count() + " components");
   }
-
 }
