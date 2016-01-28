@@ -29,6 +29,9 @@ public class Parenthesis {
         return false;
       }
     }
+    if (st.size() > 0) {
+      return false;
+    }
     return true;
   }
 
@@ -72,5 +75,10 @@ public class Parenthesis {
   public void test7() {
     String s = "(())";
     Assert.assertTrue(solve(s));
+  }
+
+  @Test
+  public void test8() {
+    Assert.assertFalse(solve("([]"));
   }
 }
