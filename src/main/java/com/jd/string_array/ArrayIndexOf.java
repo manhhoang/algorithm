@@ -19,7 +19,11 @@ public class ArrayIndexOf {
       if (i <= max) {
         int j = i + 1;
         int end = j + targetCount - 1;
-        for (int k = 1; j < end && source[j] == target[k]; j++, k++);
+        int k = 1;
+        while (j < end && source[j] == target[k]) {
+          j++;
+          k++;
+        }
 
         if (j == end) {
           /* Found whole array. */
