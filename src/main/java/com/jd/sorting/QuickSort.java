@@ -30,7 +30,7 @@
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
-package com.jd.divide_and_conquer;
+package com.jd.sorting;
 
 import com.jd.algorithm.StdOut;
 import com.jd.algorithm.StdRandom;

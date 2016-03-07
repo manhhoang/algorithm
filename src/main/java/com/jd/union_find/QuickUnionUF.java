@@ -1,4 +1,4 @@
-package com.jd.algorithm.union_find;
+package com.jd.union_find;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,18 +7,18 @@ import java.util.Scanner;
 import com.jd.algorithm.StdOut;
 
 /******************************************************************************
- * Compilation: javac WeightedQuickUnionUF.java Execution: java WeightedQuickUnionUF < input.txt
- * Dependencies: StdIn.java StdOut.java
+ * Compilation: javac QuickUnionUF.java Execution: java QuickUnionUF < input.txt Dependencies:
+ * StdIn.java StdOut.java
  *
- * Weighted quick-union (without path compression).
+ * Quick-union algorithm.
  *
  ******************************************************************************/
 
 /**
- * The <tt>WeightedQuickUnionUF</tt> class represents a <em>union-find data type</em> (also known as
- * the <em>disjoint-sets data type</em>). It supports the <em>union</em> and <em>find</em>
- * operations, along with a <em>connected</em> operation for determining whether two sites are in
- * the same component and a <em>count</em> operation that returns the total number of components.
+ * The <tt>QuickUnionUF</tt> class represents a <em>union-find data type</em> (also known as the
+ * <em>disjoint-sets data type</em>). It supports the <em>union</em> and <em>find</em> operations,
+ * along with a <em>connected</em> operation for determining whether two sites are in the same
+ * component and a <em>count</em> operation that returns the total number of components.
  * <p>
  * The union-find data type models connectivity among a set of <em>N</em> sites, named 0 through
  * <em>N</em> &ndash; 1. The <em>is-connected-to</em> relation must be an
@@ -61,11 +61,11 @@ import com.jd.algorithm.StdOut;
  * a call to <em>union</em>&mdash;it cannot change during a call to <em>find</em>,
  * <em>connected</em>, or <em>count</em>.
  * <p>
- * This implementation uses weighted quick union by size (without path compression). Initializing a
- * data structure with <em>N</em> sites takes linear time. Afterwards, the <em>union</em>,
- * <em>find</em>, and <em>connected</em> operations take logarithmic time (in the worst case) and
- * the <em>count</em> operation takes constant time. For alternate implementations of the same API,
- * see {@link UF}, {@link QuickFindUF}, and {@link QuickUnionUF}.
+ * This implementation uses quick union. Initializing a data structure with <em>N</em> sites takes
+ * linear time. Afterwards, the <em>union</em>, <em>find</em>, and <em>connected</em> operations
+ * take linear time (in the worst case) and the <em>count</em> operation takes constant time. For
+ * alternate implementations of the same API, see {@link UF}, {@link QuickFindUF}, and
+ * {@link WeightedQuickUnionUF}.
  *
  * <p>
  * For additional documentation, see <a href="http://algs4.cs.princeton.edu/15uf">Section 1.5</a> of
@@ -74,9 +74,8 @@ import com.jd.algorithm.StdOut;
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
-public class WeightedQuickUnionUF {
+public class QuickUnionUF {
   private int[] parent; // parent[i] = parent of i
-  private int[] size; // size[i] = number of sites in subtree rooted at i
   private int count; // number of components
 
   /**
@@ -86,13 +85,11 @@ public class WeightedQuickUnionUF {
    * @param N the number of sites
    * @throws IllegalArgumentException if <tt>N &lt; 0</tt>
    */
-  public WeightedQuickUnionUF(int N) {
-    count = N;
+  public QuickUnionUF(int N) {
     parent = new int[N];
-    size = new int[N];
+    count = N;
     for (int i = 0; i < N; i++) {
       parent[i] = i;
-      size[i] = 1;
     }
   }
 
@@ -155,15 +152,7 @@ public class WeightedQuickUnionUF {
     int rootQ = find(q);
     if (rootP == rootQ)
       return;
-
-    // make smaller root point to larger one
-    if (size[rootP] < size[rootQ]) {
-      parent[rootP] = rootQ;
-      size[rootQ] += size[rootP];
-    } else {
-      parent[rootQ] = rootP;
-      size[rootP] += size[rootQ];
-    }
+    parent[rootP] = rootQ;
     count--;
   }
 
@@ -180,7 +169,7 @@ public class WeightedQuickUnionUF {
     File file = new File(fileName);
     Scanner sc = new Scanner(file);
     int N = sc.nextInt();
-    WeightedQuickUnionUF uf = new WeightedQuickUnionUF(N);
+    QuickUnionUF uf = new QuickUnionUF(N);
     while (sc.hasNext()) {
       int p = sc.nextInt();
       int q = sc.nextInt();

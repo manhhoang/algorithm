@@ -26,14 +26,14 @@
  * @author Kevin Wayne
  */
 
-package com.jd.divide_and_conquer;
+package com.jd.sorting;
 
 import com.jd.algorithm.StdOut;
 
-public class Merge {
+public class MergeSort {
 
   // This class should not be instantiated.
-  private Merge() {
+  private MergeSort() {
   }
 
   // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
@@ -181,7 +181,7 @@ public class Merge {
    */
   public static void main(String[] args) {
     String[] a = new String[] {"1", "3", "5", "2", "4"};
-    Merge.sort(a);
+    MergeSort.sort(a);
     show(a);
   }
 }

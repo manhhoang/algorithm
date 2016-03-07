@@ -2,7 +2,7 @@
 // 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4]. How many different ways do you know
 // to solve this problem?
 
-package com.jd.string_array;
+package com.jd.string;
 
 import org.junit.Assert;
 import org.junit.Test;

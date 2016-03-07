@@ -1,4 +1,4 @@
-package com.jd.suffix_array;
+package com.jd.string.suffix_array;
 
 /******************************************************************************
  * Compilation: javac SuffixArray.java Execution: java SuffixArray < input.txt Dependencies:

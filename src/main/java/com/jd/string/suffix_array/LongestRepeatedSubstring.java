@@ -1,4 +1,4 @@
-package com.jd.suffix_array;
+package com.jd.string.suffix_array;
 
 import java.io.File;
 import java.io.IOException;

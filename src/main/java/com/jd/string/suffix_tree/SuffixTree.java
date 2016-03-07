@@ -1,4 +1,4 @@
-package com.jd.suffix_tree;
+package com.jd.string.suffix_tree;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.jd.string_array;
+package com.jd.array;
 
 import org.junit.Assert;
 import org.junit.Test;
