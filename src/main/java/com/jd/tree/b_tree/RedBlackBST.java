@@ -1,4 +1,4 @@
-package com.jd.tree;
+package com.jd.tree.b_tree;
 
 /******************************************************************************
  * Compilation: javac RedBlackBST.java Execution: java RedBlackBST < input.txt Dependencies:

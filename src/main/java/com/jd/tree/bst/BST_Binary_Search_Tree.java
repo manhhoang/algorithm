@@ -1,4 +1,4 @@
-package com.jd.tree;
+package com.jd.tree.bst;
 
 /******************************************************************************
  * Compilation: javac BST.java Execution: java BST Dependencies: StdIn.java StdOut.java Queue.java
@@ -17,6 +17,7 @@ import java.util.NoSuchElementException;
 import com.jd.algorithm.Queue;
 import com.jd.algorithm.ST;
 import com.jd.algorithm.StdOut;
+import com.jd.tree.b_tree.RedBlackBST;
 
 /**
  * The <tt>BST</tt> class represents an ordered symbol table of generic key-value pairs. It supports
