@@ -1,4 +1,4 @@
-package com.jd.tree.heap;
+package com.jd.tree;
 
 public class BinaryTreePreorderTraversal {
 
