@@ -1,4 +1,4 @@
-package com.jd.divide_and_conquer;
+package com.jd.two_pointers;
 
 import java.util.Arrays;
 
