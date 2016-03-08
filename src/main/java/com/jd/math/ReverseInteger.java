@@ -1,10 +1,27 @@
 package com.jd.math;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class ReverseInteger {
 
-  public static void main(String[] args) {
-    // TODO Auto-generated method stub
+  public int reverse(int x) {
+    int rev = 0;
+    while (x != 0) {
+      rev = rev * 10 + x % 10;
+      x = x / 10;
+    }
 
+    return rev;
   }
 
+  @Test
+  public void test1() {
+    Assert.assertEquals(321, reverse(123));
+  }
+
+  @Test
+  public void test2() {
+    Assert.assertEquals(-321, reverse(-123));
+  }
 }
