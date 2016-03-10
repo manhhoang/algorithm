@@ -1,4 +1,4 @@
-package com.jd.string.segment_tree;
+package com.jd.tree.segment_tree;
 
 /******************************************************************************
  *  Compilation:  javac SegmentTree.java
