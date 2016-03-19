@@ -1,4 +1,4 @@
-package com.jd.algo.backtracking.combinatorial_enumeration;
+package com.jd.combinatorial_enumeration;
 
 public class PermutationArray {
 
