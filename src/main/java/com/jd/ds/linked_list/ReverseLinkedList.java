@@ -23,6 +23,7 @@ public class ReverseLinkedList {
       next = current.next;
       current.next = prev;
       prev = current;
+      
       current = next;
     }
     node = prev;
