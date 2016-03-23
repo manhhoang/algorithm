@@ -1,4 +1,4 @@
-package com.jd.dp.prefix_sum;
+package com.jd.algo.dp.prefix_sum;
 
 import org.junit.Assert;
 import org.junit.Test;
