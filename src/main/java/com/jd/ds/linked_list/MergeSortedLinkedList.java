@@ -15,46 +15,26 @@ public class MergeSortedLinkedList {
     }
   }
 
-  public static Node mergeLists(Node headA, Node headB) {
-    Node ans = null;
-    Node a = headA;
-    Node b = headB;
-    if (a == null)
-      ans = b;
-    else if (b == null)
-      ans = a;
-    Node x = null;
-    while (a != null || b != null) {
-      Node c = null;
-      if (a == null) {
-        c = b;
-        b = b.next;
-      } else if (b == null) {
-        c = a;
-        a = a.next;
-      }
-      if (a != null && b != null) {
-        if (a.val < b.val) {
-          c = a;
-          a = a.next;
-        } else if (a.val > b.val) {
-          c = b;
-          b = b.next;
-        } else {
-          c = a;
-          a = a.next;
-          b = b.next;
-        }
-      }
-      if (ans == null) {
-        ans = c;
-        x = ans;
-      } else {
-        x.next = c;
-      }
-      x = x.next;
+  public static Node mergeLists(Node nodeA, Node nodeB) {
+    if (nodeA == null && nodeB == null) {
+      return null;
+    } else if (nodeA == null) {
+      return nodeB;
+    } else if (nodeB == null) {
+      return nodeA;
     }
-    return ans;
+
+    Node nodeC = null;
+    if (nodeA != null && nodeB != null) {
+      if (nodeA.val <= nodeB.val) {
+        nodeC = nodeA;
+        nodeC.next = mergeLists(nodeA.next, nodeB);
+      } else if (nodeA.val > nodeB.val) {
+        nodeC = nodeB;
+        nodeC.next = mergeLists(nodeA, nodeB.next);
+      }
+    }
+    return nodeC;
   }
 
   public static Node insert(Node head, int val) {
