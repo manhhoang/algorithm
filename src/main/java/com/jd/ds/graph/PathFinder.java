@@ -54,13 +54,13 @@ public class PathFinder {
         // all its neighbors, provided they haven't yet been visited
         while (!q.isEmpty()) {
             String v = q.dequeue();
-            for (String w : G.adjacentTo(v)) {
-                if (!dist.contains(w)) {
-                    q.enqueue(w);
-                    dist.put(w, 1 + dist.get(v));
-                    prev.put(w, v);
-                }
-            }
+//            for (String w : G.adjacentTo(v)) {
+//                if (!dist.contains(w)) {
+//                    q.enqueue(w);
+//                    dist.put(w, 1 + dist.get(v));
+//                    prev.put(w, v);
+//                }
+//            }
         }
     }
 
@@ -87,19 +87,19 @@ public class PathFinder {
 
 
     public static void main(String[] args) {
-        String filename  = args[0];
-        String delimiter = args[1];
-        In in = new In(filename); 
-        Graph G = GraphGenerator.read(in, delimiter);
-        String s = args[2];
-        PathFinder pf = new PathFinder(G, s);
-        while (!StdIn.isEmpty()) {
-            String t = StdIn.readLine();
-            for (String v : pf.pathTo(t)) {
-                StdOut.println("   " + v);
-            }
-            StdOut.println("distance " + pf.distanceTo(t));
-        }
+//        String filename  = args[0];
+//        String delimiter = args[1];
+//        In in = new In(filename);
+//        Graph G = GraphGenerator.read(in, delimiter);
+//        String s = args[2];
+//        PathFinder pf = new PathFinder(G, s);
+//        while (!StdIn.isEmpty()) {
+//            String t = StdIn.readLine();
+//            for (String v : pf.pathTo(t)) {
+//                StdOut.println("   " + v);
+//            }
+//            StdOut.println("distance " + pf.distanceTo(t));
+//        }
     }
 
 
