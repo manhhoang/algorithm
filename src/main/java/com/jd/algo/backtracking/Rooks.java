@@ -19,7 +19,6 @@ public class Rooks {
     rooks = new int[N];
     for (int i = 0; i < N; i++)
       rooks[i] = i;
-    enumerate(0);
   }
 
   // Print out current permutation
@@ -31,7 +30,6 @@ public class Rooks {
 
   // enumerate all solutions
   public void enumerate(int n) {
-
     // found a solution
     if (n == N) {
       process();
@@ -56,5 +54,6 @@ public class Rooks {
   public static void main(String[] args) {
     int N = 3;
     Rooks rooks = new Rooks(N);
+    rooks.enumerate(0);
   }
 }
