@@ -50,12 +50,12 @@ public class DepthFirstSearch {
 
     // Driver method
     public static void main (String[] args) throws java.lang.Exception {
-        int m[][]=  new int[][]
-                {{1, 1, 0, 0, 0},
-                 {0, 1, 0, 0, 1},
-                 {1, 0, 0, 1, 1},
-                 {0, 0, 0, 0, 0},
-                 {1, 0, 1, 0, 1}
+        int[][] m = new int[][]{
+                {1, 1, 0, 0, 0},
+                {0, 1, 0, 0, 1},
+                {1, 0, 0, 1, 1},
+                {0, 0, 0, 0, 0},
+                {1, 0, 1, 0, 1}
         };
         DepthFirstSearch dfs = new DepthFirstSearch();
         System.out.println("Number of islands is: "+ dfs.countIslands(m));
