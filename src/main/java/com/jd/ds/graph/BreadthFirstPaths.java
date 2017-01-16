@@ -6,7 +6,7 @@ import java.io.IOException;
 import com.jd.algorithm.In;
 import com.jd.algorithm.Queue;
 import com.jd.algorithm.StdOut;
-import com.jd.ds.stack.Stack;
+import com.jd.algorithm.Stack;
 
 /******************************************************************************
  *  Compilation:  javac BreadthFirstPaths.java

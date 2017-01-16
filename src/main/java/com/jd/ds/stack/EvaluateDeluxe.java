@@ -21,6 +21,7 @@ package com.jd.ds.stack;
 
 import java.util.TreeMap;
 
+import com.jd.algorithm.Stack;
 import com.jd.algorithm.StdOut;
 
 public class EvaluateDeluxe {

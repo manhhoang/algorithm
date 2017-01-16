@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.jd.algorithm.In;
 import com.jd.algorithm.StdOut;
-import com.jd.ds.stack.Stack;
+import com.jd.algorithm.Stack;
 
 /******************************************************************************
  *  Compilation:  javac AcyclicSP.java

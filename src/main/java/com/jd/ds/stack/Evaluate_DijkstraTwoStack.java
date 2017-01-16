@@ -22,6 +22,8 @@ package com.jd.ds.stack;
  *
  ******************************************************************************/
 
+import com.jd.algorithm.Stack;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;

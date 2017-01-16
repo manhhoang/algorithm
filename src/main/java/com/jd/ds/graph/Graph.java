@@ -6,7 +6,7 @@ import java.io.IOException;
 import com.jd.algorithm.Bag;
 import com.jd.algorithm.In;
 import com.jd.algorithm.StdOut;
-import com.jd.ds.stack.Stack;
+import com.jd.algorithm.Stack;
 
 /******************************************************************************
  * Compilation: javac Graph.java Execution: java Graph input.txt Dependencies: Bag.java In.java

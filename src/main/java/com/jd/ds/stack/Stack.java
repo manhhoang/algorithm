@@ -1,127 +1,38 @@
 package com.jd.ds.stack;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-import com.jd.algorithm.StdIn;
-import com.jd.algorithm.StdOut;
-
-public class Stack<Item> implements Iterable<Item> {
-  private int N; // size of the stack
-  private Node first; // top of stack
-
-  // helper linked list class
-  private class Node {
-    private Item item;
-    private Node next;
-  }
-
-  /**
-   * Create an empty stack.
-   */
-  public Stack() {
-    first = null;
-    N = 0;
-  }
-
-  /**
-   * Is the stack empty?
-   */
-  public boolean isEmpty() {
-    return first == null;
-  }
-
-  /**
-   * Return the number of items in the stack.
-   */
-  public int size() {
-    return N;
-  }
-
-  /**
-   * Add the item to the stack.
-   */
-  public void push(Item item) {
-    Node oldfirst = first;
-    first = new Node();
-    first.item = item;
-    first.next = oldfirst;
-    N++;
-  }
-
-  /**
-   * Delete and return the item most recently added to the stack. Throw an exception if no such item
-   * exists because the stack is empty.
-   */
-  public Item pop() {
-    if (isEmpty())
-      throw new RuntimeException("Stack underflow");
-    Item item = first.item; // save item to return
-    first = first.next; // delete first node
-    N--;
-    return item; // return the saved item
-  }
-
-  /**
-   * Return the item most recently added to the stack. Throw an exception if no such item exists
-   * because the stack is empty.
-   */
-  public Item peek() {
-    if (isEmpty())
-      throw new RuntimeException("Stack underflow");
-    return first.item;
-  }
-
-  /**
-   * Return string representation.
-   */
-  public String toString() {
-    StringBuilder s = new StringBuilder();
-    for (Item item : this)
-      s.append(item + " ");
-    return s.toString();
-  }
-
-  /**
-   * Return an iterator to the stack that iterates through the items in LIFO order.
-   */
-  public Iterator<Item> iterator() {
-    return new ListIterator();
-  }
-
-  // an iterator, doesn't implement remove() since it's optional
-  private class ListIterator implements Iterator<Item> {
-    private Node current = first;
-
-    public boolean hasNext() {
-      return current != null;
+public class Stack<T> {
+    private class Node{
+        private T val;
+        private Node next;
     }
 
-    public void remove() {
-      throw new UnsupportedOperationException();
+    private int N;
+    private Node first;
+
+    public void push(T val){
+        Node node = new Node();
+        node.val = val;
+        node.next = first;
+        first = node;
+        N++;
     }
 
-    public Item next() {
-      if (!hasNext())
-        throw new NoSuchElementException();
-      Item item = current.item;
-      current = current.next;
-      return item;
+    public T pop(){
+        T temp = first.val;
+        first = first.next;
+        N--;
+        return temp;
     }
-  }
 
-  /**
-   * A test client.
-   */
-  public static void main(String[] args) {
-    Stack<String> s = new Stack<String>();
-    while (!StdIn.isEmpty()) {
-      String item = StdIn.readString();
-      if (!item.equals("-"))
-        s.push(item);
-      else if (!s.isEmpty())
-        StdOut.print(s.pop() + " ");
+    public static void main(String[] args) {
+        Stack<String> q = new Stack<>();
+        q.push("A");
+        q.push("B");
+        q.push("C");
+        System.out.println(q.N);
+        System.out.println(q.N + " : " + q.pop());
+        System.out.println(q.N + " : " + q.pop());
+        System.out.println(q.N + " : " + q.pop());
     }
-    StdOut.println("(" + s.size() + " left on stack)");
-  }
+
 }

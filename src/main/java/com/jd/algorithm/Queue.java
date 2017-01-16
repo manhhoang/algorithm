@@ -162,12 +162,15 @@ public class Queue<Item> implements Iterable<Item> {
      * Unit tests the <tt>Queue</tt> data type.
      */
     public static void main(String[] args) {
-        Queue<String> q = new Queue<String>();
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
-            if (!item.equals("-")) q.enqueue(item);
-            else if (!q.isEmpty()) StdOut.print(q.dequeue() + " ");
-        }
-        StdOut.println("(" + q.size() + " left on queue)");
+        Queue<String> q = new Queue<>();
+        q.enqueue("A");
+        q.enqueue("B");
+        q.enqueue("C");
+        q.enqueue("D");
+        System.out.println(q.N);
+        System.out.println(q.N + " : " + q.dequeue());
+        System.out.println(q.N + " : " + q.dequeue());
+        System.out.println(q.N + " : " + q.dequeue());
+        System.out.println(q.N + " : " + q.dequeue());
     }
 }
