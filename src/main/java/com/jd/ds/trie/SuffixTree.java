@@ -1,8 +1,9 @@
-package com.jd.ds.tree.suffix_tree;
+package com.jd.ds.trie;
 
 import java.util.HashMap;
 
 public class SuffixTree {
+
 	private static class Node extends HashMap<Character, Node> {
 		/**
 		 * Follows a link to get a child node. If no such link exists, then
