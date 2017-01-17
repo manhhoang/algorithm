@@ -83,12 +83,12 @@ public class Trie {
 
     public static void main(String[] args) {
         Trie trie = new Trie();
-        String[] input = new String[] { "ba", "ban", "ana", "anas", "nan", "anans", "ananas", "n", "s", "as", "naab",
-                "baan", "aan", };
-        for (String s : input) {
+        String[] data = new String[] { "bananas", "ban", "ana"};
+        for (String s : data) {
             trie.insert(s);
         }
 
+        String[] input = new String[] { "bananas", "ba", "ana"};
         for (String s : input) {
             String exists = trie.search(s) ? "exists" : "doesn't exist";
             System.out.printf("Input: %s %s\n", s, exists);

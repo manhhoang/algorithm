@@ -1,6 +1,6 @@
 package com.jd.ds.trie;
 
-public class Trie_Array {
+public class TrieArray {
 
     private class TrieNode {
         TrieNode[] arr;
@@ -14,7 +14,7 @@ public class Trie_Array {
 
     private TrieNode root;
 
-    public Trie_Array() {
+    public TrieArray() {
         root = new TrieNode();
     }
 
@@ -78,15 +78,15 @@ public class Trie_Array {
     }
 
     public static void main(String[] args) {
-        Trie_Array trie = new Trie_Array();
-        String[] input = new String[] { "ba", "ban", "ana", "anas", "nan", "anans", "ananas", "n", "s", "as", "naab",
-                "baan", "aan", };
-        for (String s : input) {
-            trie.insert(s);
+        TrieArray trieArray = new TrieArray();
+        String[] data = new String[] { "bananas", "ban", "ana"};
+        for (String s : data) {
+            trieArray.insert(s);
         }
 
+        String[] input = new String[] { "bananas", "ba", "ana"};
         for (String s : input) {
-            String exists = trie.search(s) ? "exists" : "doesn't exist";
+            String exists = trieArray.search(s) ? "exists" : "doesn't exist";
             System.out.printf("Input: %s %s\n", s, exists);
         }
     }
