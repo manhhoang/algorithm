@@ -1,4 +1,4 @@
-package com.jd.ds.array;
+package com.jd.search;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -38,7 +38,7 @@ public class ShortestPath {
     }
 
     // Driver method
-    public static void main (String[] args) throws java.lang.Exception {
+    public static void main (String[] args) throws Exception {
         int[][] map = new int[][]{
                 {0, 1, 0, 0, 0},
                 {0, 0, 0, 1, 0},

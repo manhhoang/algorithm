@@ -1,4 +1,4 @@
-package com.jd.ds.array;
+package com.jd.search;
 
 public class DepthFirstSearch {
 
@@ -44,7 +44,7 @@ public class DepthFirstSearch {
     }
 
     // Driver method
-    public static void main (String[] args) throws java.lang.Exception {
+    public static void main (String[] args) throws Exception {
         int[][] m = new int[][]{
                 {1, 1, 0, 0, 0},
                 {0, 1, 0, 0, 1},
