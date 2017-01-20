@@ -5,30 +5,28 @@ import org.junit.Test;
 
 public class CountingSort {
 
-  public int[] solution(int[] a, int min, int max) {
-    int[] count = new int[max - min + 1];
-    for (int number : a) {
-      count[number - min]++;
+    public static int[] sort(int[] a, int min, int max) {
+        int[] count = new int[max - min + 1];
+        for (int number : a) {
+            count[number - min]++;
+        }
+        int z = 0;
+        for (int i = min; i <= max; i++) {
+            while (count[i - min] > 0) {
+                a[z] = i;
+                z++;
+                count[i - min]--;
+            }
+        }
+        return a;
     }
-    int z = 0;
-    for (int i = min; i <= max; i++) {
-      while (count[i - min] > 0) {
-        a[z] = i;
-        z++;
-        count[i - min]--;
-      }
+
+    public static void main(String arr[]) {
+        int[] a = {10, 34, 2, 56, 7, 67, 88, 42};
+        sort(a, 0, 100);
+        for (int i : a) {
+            System.out.print(i);
+            System.out.print(", ");
+        }
     }
-    return a;
-  }
-
-  @Test
-  public void test1() {
-    Assert.assertArrayEquals(new int[] {1, 3, 3, 5, 7}, solution(new int[] {1, 5, 3, 7, 3}, 0, 7));
-  }
-
-  @Test
-  public void test2() {
-    Assert.assertArrayEquals(new int[] {-3, -3, -1, 5, 7}, solution(new int[] {-1, 5, -3, 7, -3},
-        -3, 7));
-  }
 }
