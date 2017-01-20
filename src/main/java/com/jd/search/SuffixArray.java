@@ -1,4 +1,4 @@
-package com.jd.string.suffix_array;
+package com.jd.search;
 
 /******************************************************************************
  * Compilation: javac SuffixArray.java Execution: java SuffixArray < input.txt Dependencies:
@@ -16,13 +16,13 @@ package com.jd.string.suffix_array;
  *
  ******************************************************************************/
 
+import com.jd.algorithm.StdIn;
+import com.jd.algorithm.StdOut;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-
-import com.jd.algorithm.StdIn;
-import com.jd.algorithm.StdOut;
 
 /**
  * The <tt>SuffixArray</tt> class represents a suffix array of a string of length <em>N</em>. It
@@ -114,7 +114,7 @@ public class SuffixArray {
    * 
    * @param i an integer between 0 and <em>N</em>-1
    * @return the index into the original string of the <em>i</em>th smallest suffix
-   * @throws java.lang.IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <Em>N</em>
+   * @throws IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <Em>N</em>
    */
   public int index(int i) {
     if (i < 0 || i >= suffixes.length)
@@ -125,11 +125,11 @@ public class SuffixArray {
   /**
    * Returns the length of the longest common prefix of the <em>i</em>th smallest suffix and the
    * <em>i</em>-1st smallest suffix.
-   * 
+   *
    * @param i an integer between 1 and <em>N</em>-1
    * @return the length of the longest common prefix of the <em>i</em>th smallest suffix and the
    *         <em>i</em>-1st smallest suffix.
-   * @throws java.lang.IndexOutOfBoundsException unless 1 &le; <em>i</em> &lt; <em>N</em>
+   * @throws IndexOutOfBoundsException unless 1 &le; <em>i</em> &lt; <em>N</em>
    */
   public int lcp(int i) {
     if (i < 1 || i >= suffixes.length)
@@ -149,10 +149,10 @@ public class SuffixArray {
 
   /**
    * Returns the <em>i</em>th smallest suffix as a string.
-   * 
+   *
    * @param i the index
    * @return the <em>i</em> smallest suffix as a string
-   * @throws java.lang.IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <Em>N</em>
+   * @throws IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <Em>N</em>
    */
   public String select(int i) {
     if (i < 0 || i >= suffixes.length)
