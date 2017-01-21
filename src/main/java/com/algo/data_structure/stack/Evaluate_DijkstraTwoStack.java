@@ -18,7 +18,7 @@ package com.algo.data_structure.stack;
  *
  * Moreover, in such expressions, all parentheses are redundant! Removing them yields an expression
  * known as a postfix expression. 1 2 3 + 4 5 * * +
- * 
+ *
  *
  ******************************************************************************/
 
@@ -30,46 +30,46 @@ import java.util.Scanner;
 
 public class Evaluate_DijkstraTwoStack {
 
-  public static void main(String[] args) throws IOException {
-    String currentPath = new File(".").getCanonicalPath();
-    String fileName = currentPath + "/src/cs/Evaluate";
-    File file = new File(fileName);
-    Scanner sc = new Scanner(file);
+    public static void main(String[] args) throws IOException {
+        String currentPath = new File(".").getCanonicalPath();
+        String fileName = currentPath + "/src/cs/Evaluate";
+        File file = new File(fileName);
+        Scanner sc = new Scanner(file);
 
-    Stack<String> ops = new Stack<String>();
-    Stack<Double> vals = new Stack<Double>();
-    while (sc.hasNext()) { // Read token, push if operator.
-      String s = sc.next();
-      if (s.equals("("))
-        ;
-      else if (s.equals("+"))
-        ops.push(s);
-      else if (s.equals("-"))
-        ops.push(s);
-      else if (s.equals("*"))
-        ops.push(s);
-      else if (s.equals("/"))
-        ops.push(s);
-      else if (s.equals("sqrt"))
-        ops.push(s);
-      else if (s.equals(")")) { // Pop, evaluate, and push result if token is ")".
-        String op = ops.pop();
-        double v = vals.pop();
-        if (op.equals("+"))
-          v = vals.pop() + v;
-        else if (op.equals("-"))
-          v = vals.pop() - v;
-        else if (op.equals("*"))
-          v = vals.pop() * v;
-        else if (op.equals("/"))
-          v = vals.pop() / v;
-        else if (op.equals("sqrt"))
-          v = Math.sqrt(v);
-        vals.push(v);
-      } // Token not operator or paren: push double value.
-      else
-        vals.push(Double.parseDouble(s));
+        Stack<String> ops = new Stack<String>();
+        Stack<Double> vals = new Stack<Double>();
+        while (sc.hasNext()) { // Read token, push if operator.
+            String s = sc.next();
+            if (s.equals("("))
+                ;
+            else if (s.equals("+"))
+                ops.push(s);
+            else if (s.equals("-"))
+                ops.push(s);
+            else if (s.equals("*"))
+                ops.push(s);
+            else if (s.equals("/"))
+                ops.push(s);
+            else if (s.equals("sqrt"))
+                ops.push(s);
+            else if (s.equals(")")) { // Pop, evaluate, and push result if token is ")".
+                String op = ops.pop();
+                double v = vals.pop();
+                if (op.equals("+"))
+                    v = vals.pop() + v;
+                else if (op.equals("-"))
+                    v = vals.pop() - v;
+                else if (op.equals("*"))
+                    v = vals.pop() * v;
+                else if (op.equals("/"))
+                    v = vals.pop() / v;
+                else if (op.equals("sqrt"))
+                    v = Math.sqrt(v);
+                vals.push(v);
+            } // Token not operator or paren: push double value.
+            else
+                vals.push(Double.parseDouble(s));
+        }
+        System.out.println(vals.pop());
     }
-    System.out.println(vals.pop());
-  }
 }

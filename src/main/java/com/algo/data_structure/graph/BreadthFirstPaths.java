@@ -47,21 +47,21 @@ import com.algo.algorithm.util.Stack;
 
 
 /**
- *  The <tt>BreadthFirstPaths</tt> class represents a data type for finding
- *  shortest paths (number of edges) from a source vertex <em>s</em>
- *  (or a set of source vertices)
- *  to every other vertex in an undirected graph.
- *  <p>
- *  This implementation uses breadth-first search.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  It uses extra space (not including the graph) proportional to <em>V</em>.
- *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
- *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The <tt>BreadthFirstPaths</tt> class represents a data type for finding
+ * shortest paths (number of edges) from a source vertex <em>s</em>
+ * (or a set of source vertices)
+ * to every other vertex in an undirected graph.
+ * <p>
+ * This implementation uses breadth-first search.
+ * The constructor takes time proportional to <em>V</em> + <em>E</em>,
+ * where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ * It uses extra space (not including the graph) proportional to <em>V</em>.
+ * <p>
+ * For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>
+ * of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class BreadthFirstPaths {
     private static final int INFINITY = Integer.MAX_VALUE;
@@ -72,6 +72,7 @@ public class BreadthFirstPaths {
     /**
      * Computes the shortest path between the source vertex <tt>s</tt>
      * and every other vertex in the graph <tt>G</tt>.
+     *
      * @param G the graph
      * @param s the source vertex
      */
@@ -87,7 +88,8 @@ public class BreadthFirstPaths {
     /**
      * Computes the shortest path between any one of the source vertices in <tt>sources</tt>
      * and every other vertex in graph <tt>G</tt>.
-     * @param G the graph
+     *
+     * @param G       the graph
      * @param sources the source vertices
      */
     public BreadthFirstPaths(Graph G, Iterable<Integer> sources) {
@@ -145,6 +147,7 @@ public class BreadthFirstPaths {
 
     /**
      * Is there a path between the source vertex <tt>s</tt> (or sources) and vertex <tt>v</tt>?
+     *
      * @param v the vertex
      * @return <tt>true</tt> if there is a path, and <tt>false</tt> otherwise
      */
@@ -155,6 +158,7 @@ public class BreadthFirstPaths {
     /**
      * Returns the number of edges in a shortest path between the source vertex <tt>s</tt>
      * (or sources) and vertex <tt>v</tt>?
+     *
      * @param v the vertex
      * @return the number of edges in a shortest path
      */
@@ -165,6 +169,7 @@ public class BreadthFirstPaths {
     /**
      * Returns a shortest path between the source vertex <tt>s</tt> (or sources)
      * and <tt>v</tt>, or <tt>null</tt> if no such path.
+     *
      * @param v the vertex
      * @return the sequence of vertices on a shortest path, as an Iterable
      */
@@ -225,7 +230,8 @@ public class BreadthFirstPaths {
 
     /**
      * Unit tests the <tt>BreadthFirstPaths</tt> data type.
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         String currentPath = new File(".").getCanonicalPath();
@@ -242,12 +248,10 @@ public class BreadthFirstPaths {
                 StdOut.printf("%d to %d (%d):  ", s, v, bfs.distTo(v));
                 for (int x : bfs.pathTo(v)) {
                     if (x == s) StdOut.print(x);
-                    else        StdOut.print("-" + x);
+                    else StdOut.print("-" + x);
                 }
                 StdOut.println();
-            }
-
-            else {
+            } else {
                 StdOut.printf("%d to %d (-):  not connected\n", s, v);
             }
 

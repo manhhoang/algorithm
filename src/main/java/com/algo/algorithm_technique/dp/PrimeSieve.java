@@ -1,6 +1,6 @@
 /******************************************************************************
  * Compilation: javac PrimeSieve.java Execution: java -Xmx1100m PrimeSieve N
- * 
+ *
  * Computes the number of primes less than or equal to N using the Sieve of Eratosthenes.
  *
  * % java PrimeSieve 25 The number of primes <= 25 is 9
@@ -10,7 +10,7 @@
  * % java -Xmx100m PrimeSieve 100000000 The number of primes <= 100000000 is 5761455
  *
  * % java PrimeSieve -Xmx1100m 1000000000 The number of primes <= 1000000000 is 50847534
- * 
+ *
  *
  * The 110MB and 1100MB is the amount of memory you want to allocate to the program. If your
  * computer has less, make this number smaller, but it may prevent you from solving the problem for
@@ -25,35 +25,35 @@
 package com.algo.algorithm_technique.dp;
 
 public class PrimeSieve {
-  public static void main(String[] args) {
-    int N = 25;
+    public static void main(String[] args) {
+        int N = 25;
 
-    // initially assume all integers are prime
-    boolean[] isPrime = new boolean[N + 1];
-    for (int i = 2; i <= N; i++) {
-      isPrime[i] = true;
-    }
-
-    // mark non-primes <= N using Sieve of Eratosthenes
-    for (int i = 2; i * i <= N; i++) {
-
-      // if i is prime, then mark multiples of i as nonprime
-      // suffices to consider mutiples i, i+1, ..., N/i
-      if (isPrime[i]) {
-        for (int j = i; i * j <= N; j++) {
-          isPrime[i * j] = false;
+        // initially assume all integers are prime
+        boolean[] isPrime = new boolean[N + 1];
+        for (int i = 2; i <= N; i++) {
+            isPrime[i] = true;
         }
-      }
-    }
 
-    // count primes
-    int primes = 0;
-    for (int i = 2; i <= N; i++) {
-      if (isPrime[i]) {
-        System.out.print(i + " ");
-        primes++;
-      }
+        // mark non-primes <= N using Sieve of Eratosthenes
+        for (int i = 2; i * i <= N; i++) {
+
+            // if i is prime, then mark multiples of i as nonprime
+            // suffices to consider mutiples i, i+1, ..., N/i
+            if (isPrime[i]) {
+                for (int j = i; i * j <= N; j++) {
+                    isPrime[i * j] = false;
+                }
+            }
+        }
+
+        // count primes
+        int primes = 0;
+        for (int i = 2; i <= N; i++) {
+            if (isPrime[i]) {
+                System.out.print(i + " ");
+                primes++;
+            }
+        }
+        System.out.println("The number of primes <= " + N + " is " + primes);
     }
-    System.out.println("The number of primes <= " + N + " is " + primes);
-  }
 }

@@ -39,24 +39,24 @@ import com.algo.algorithm.util.Stack;
  ******************************************************************************/
 
 /**
- *  The <tt>DepthFirstOrder</tt> class represents a data type for 
- *  determining depth-first search ordering of the vertices in a digraph
- *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
- *  <p>
- *  This implementation uses depth-first search.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>
- *  (in the worst case),
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <em>preorder</em>, <em>postorder</em>, and <em>reverse postorder</em>
- *  operation takes take time proportional to <em>V</em>.
- *  <p>
- *  <p>
- *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The <tt>DepthFirstOrder</tt> class represents a data type for
+ * determining depth-first search ordering of the vertices in a digraph
+ * or edge-weighted digraph, including preorder, postorder, and reverse postorder.
+ * <p>
+ * This implementation uses depth-first search.
+ * The constructor takes time proportional to <em>V</em> + <em>E</em>
+ * (in the worst case),
+ * where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ * Afterwards, the <em>preorder</em>, <em>postorder</em>, and <em>reverse postorder</em>
+ * operation takes take time proportional to <em>V</em>.
+ * <p>
+ * <p>
+ * For additional documentation,
+ * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class DepthFirstOrder {
     private boolean[] marked;          // marked[v] = has v been marked in dfs?
@@ -69,28 +69,30 @@ public class DepthFirstOrder {
 
     /**
      * Determines a depth-first order for the digraph <tt>G</tt>.
+     *
      * @param G the digraph
      */
     public DepthFirstOrder(Digraph G) {
-        pre    = new int[G.V()];
-        post   = new int[G.V()];
+        pre = new int[G.V()];
+        post = new int[G.V()];
         postorder = new Queue<Integer>();
-        preorder  = new Queue<Integer>();
-        marked    = new boolean[G.V()];
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
     }
 
     /**
      * Determines a depth-first order for the edge-weighted digraph <tt>G</tt>.
+     *
      * @param G the edge-weighted digraph
      */
     public DepthFirstOrder(EdgeWeightedDigraph G) {
-        pre    = new int[G.V()];
-        post   = new int[G.V()];
+        pre = new int[G.V()];
+        post = new int[G.V()];
         postorder = new Queue<Integer>();
-        preorder  = new Queue<Integer>();
-        marked    = new boolean[G.V()];
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
     }
@@ -126,6 +128,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the preorder number of vertex <tt>v</tt>.
+     *
      * @param v the vertex
      * @return the preorder number of vertex <tt>v</tt>
      */
@@ -135,6 +138,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the postorder number of vertex <tt>v</tt>.
+     *
      * @param v the vertex
      * @return the postorder number of vertex <tt>v</tt>
      */
@@ -144,6 +148,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the vertices in postorder.
+     *
      * @return the vertices in postorder, as an iterable of vertices
      */
     public Iterable<Integer> post() {
@@ -152,6 +157,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the vertices in preorder.
+     *
      * @return the vertices in preorder, as an iterable of vertices
      */
     public Iterable<Integer> pre() {
@@ -160,6 +166,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the vertices in reverse postorder.
+     *
      * @return the vertices in reverse postorder, as an iterable of vertices
      */
     public Iterable<Integer> reversePost() {

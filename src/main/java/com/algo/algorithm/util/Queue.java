@@ -17,26 +17,25 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Queue</tt> class represents a first-in-first-out (FIFO)
- *  queue of generic items.
- *  It supports the usual <em>enqueue</em> and <em>dequeue</em>
- *  operations, along with methods for peeking at the first item,
- *  testing if the queue is empty, and iterating through
- *  the items in FIFO order.
- *  <p>
- *  This implementation uses a singly-linked list with a static nested class for
- *  linked-list nodes. See {@link LinkedQueue} for the version from the
- *  textbook that uses a non-static nested class.
- *  The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
- *  operations all take constant time in the worst case.
- *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The <tt>Queue</tt> class represents a first-in-first-out (FIFO)
+ * queue of generic items.
+ * It supports the usual <em>enqueue</em> and <em>dequeue</em>
+ * operations, along with methods for peeking at the first item,
+ * testing if the queue is empty, and iterating through
+ * the items in FIFO order.
+ * <p>
+ * This implementation uses a singly-linked list with a static nested class for
+ * linked-list nodes. See {@link LinkedQueue} for the version from the
+ * textbook that uses a non-static nested class.
+ * The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
+ * operations all take constant time in the worst case.
+ * <p>
+ * For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
- *
- *  @param <Item> the generic type of an item in this bag
+ * @param <Item> the generic type of an item in this bag
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class Queue<Item> implements Iterable<Item> {
     private int N;               // number of elements on queue
@@ -54,7 +53,7 @@ public class Queue<Item> implements Iterable<Item> {
      */
     public Queue() {
         first = null;
-        last  = null;
+        last = null;
         N = 0;
     }
 
@@ -73,7 +72,7 @@ public class Queue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return N;     
+        return N;
     }
 
     /**
@@ -90,7 +89,7 @@ public class Queue<Item> implements Iterable<Item> {
     /**
      * Adds the item to this queue.
      *
-     * @param  item the item to add
+     * @param item the item to add
      */
     public void enqueue(Item item) {
         Node<Item> oldlast = last;
@@ -98,7 +97,7 @@ public class Queue<Item> implements Iterable<Item> {
         last.item = item;
         last.next = null;
         if (isEmpty()) first = last;
-        else           oldlast.next = last;
+        else oldlast.next = last;
         N++;
     }
 
@@ -127,15 +126,15 @@ public class Queue<Item> implements Iterable<Item> {
         for (Item item : this)
             s.append(item + " ");
         return s.toString();
-    } 
+    }
 
     /**
      * Returns an iterator that iterates over the items in this queue in FIFO order.
      *
      * @return an iterator that iterates over the items in this queue in FIFO order
      */
-    public Iterator<Item> iterator()  {
-        return new ListIterator<Item>(first);  
+    public Iterator<Item> iterator() {
+        return new ListIterator<Item>(first);
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -146,13 +145,18 @@ public class Queue<Item> implements Iterable<Item> {
             current = first;
         }
 
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next; 
+            current = current.next;
             return item;
         }
     }

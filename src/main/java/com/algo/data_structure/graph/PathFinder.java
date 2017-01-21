@@ -8,7 +8,7 @@ import com.algo.algorithm.util.Stack;
  *  Compilation:  javac PathFinder.java
  *  Execution:    java Pathfinder input.txt delimiter source
  *  Dependencies: Queue.java Stack.java Graph.java
- *  
+ *
  *  Runs breadth first search algorithm from source s on a graph G.
  *  After preprocessing the graph, can process shortest path queries
  *  from s to any vertex t.
@@ -36,7 +36,7 @@ public class PathFinder {
 
     // prev[v] = previous vertex on shortest path from s to v
     // dist[v] = length of shortest path from s to v
-    private ST<String, String>  prev = new ST<String, String>();
+    private ST<String, String> prev = new ST<String, String>();
     private ST<String, Integer> dist = new ST<String, Integer>();
 
     // run BFS in graph G from given source vertex s
@@ -46,7 +46,7 @@ public class PathFinder {
         Queue<String> q = new Queue<String>();
         q.enqueue(s);
         dist.put(s, 0);
-        
+
         // repeated remove next vertex v from queue and insert
         // all its neighbors, provided they haven't yet been visited
         while (!q.isEmpty()) {

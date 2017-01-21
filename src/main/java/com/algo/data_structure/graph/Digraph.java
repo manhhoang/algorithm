@@ -24,7 +24,7 @@ package com.algo.data_structure.graph;
  *  10: 12 
  *  11: 4 12 
  *  12: 9 
- *  
+ *
  ******************************************************************************/
 
 import java.util.InputMismatchException;
@@ -36,24 +36,24 @@ import com.algo.algorithm.util.StdOut;
 import com.algo.algorithm.util.Stack;
 
 /**
- *  The <tt>Digraph</tt> class represents a directed graph of vertices
- *  named 0 through <em>V</em> - 1.
- *  It supports the following two primary operations: add an edge to the digraph,
- *  iterate over all of the vertices adjacent from a given vertex.
- *  Parallel edges and self-loops are permitted.
- *  <p>
- *  This implementation uses an adjacency-lists representation, which 
- *  is a vertex-indexed array of {@link Bag} objects.
- *  All operations take constant time (in the worst case) except
- *  iterating over the vertices adjacent from a given vertex, which takes
- *  time proportional to the number of such vertices.
- *  <p>
- *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The <tt>Digraph</tt> class represents a directed graph of vertices
+ * named 0 through <em>V</em> - 1.
+ * It supports the following two primary operations: add an edge to the digraph,
+ * iterate over all of the vertices adjacent from a given vertex.
+ * Parallel edges and self-loops are permitted.
+ * <p>
+ * This implementation uses an adjacency-lists representation, which
+ * is a vertex-indexed array of {@link Bag} objects.
+ * All operations take constant time (in the worst case) except
+ * iterating over the vertices adjacent from a given vertex, which takes
+ * time proportional to the number of such vertices.
+ * <p>
+ * For additional documentation,
+ * see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 
 public class Digraph {
@@ -62,11 +62,11 @@ public class Digraph {
     private final int V;
     private int E;
     private Bag<Integer>[] adj;
-    
+
     /**
      * Initializes an empty digraph with <em>V</em> vertices.
      *
-     * @param  V the number of vertices
+     * @param V the number of vertices
      * @throws IllegalArgumentException if V < 0
      */
     public Digraph(int V) {
@@ -79,15 +79,15 @@ public class Digraph {
         }
     }
 
-    /**  
+    /**
      * Initializes a digraph from an input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
      *
-     * @param  in the input stream
+     * @param in the input stream
      * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
-     * @throws IllegalArgumentException if the number of vertices or edges is negative
+     * @throws IllegalArgumentException  if the number of vertices or edges is negative
      */
     public Digraph(In in) {
         try {
@@ -102,10 +102,9 @@ public class Digraph {
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
-                addEdge(v, w); 
+                addEdge(v, w);
             }
-        }
-        catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             throw new InputMismatchException("Invalid input format in Digraph constructor");
         }
     }
@@ -113,7 +112,7 @@ public class Digraph {
     /**
      * Initializes a new digraph that is a deep copy of <tt>G</tt>.
      *
-     * @param  G the digraph to copy
+     * @param G the digraph to copy
      */
     public Digraph(Digraph G) {
         this(G.V());
@@ -129,7 +128,7 @@ public class Digraph {
             }
         }
     }
-        
+
     /**
      * Returns the number of vertices in this digraph.
      *
@@ -152,14 +151,14 @@ public class Digraph {
     // throw an IndexOutOfBoundsException unless 0 <= v < V
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
      * Adds the directed edge v->w to this digraph.
      *
-     * @param  v the tail vertex
-     * @param  w the head vertex
+     * @param v the tail vertex
+     * @param w the head vertex
      * @throws IndexOutOfBoundsException unless both 0 <= v < V and 0 <= w < V
      */
     public void addEdge(int v, int w) {
@@ -172,7 +171,7 @@ public class Digraph {
     /**
      * Returns the vertices adjacent from vertex <tt>v</tt> in this digraph.
      *
-     * @param  v the vertex
+     * @param v the vertex
      * @return the vertices adjacent from vertex <tt>v</tt> in this digraph, as an iterable
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
@@ -185,8 +184,8 @@ public class Digraph {
      * Returns the number of directed edges incident from vertex <tt>v</tt>.
      * This is known as the <em>outdegree</em> of vertex <tt>v</tt>.
      *
-     * @param  v the vertex
-     * @return the outdegree of vertex <tt>v</tt>               
+     * @param v the vertex
+     * @return the outdegree of vertex <tt>v</tt>
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int outdegree(int v) {
@@ -212,8 +211,8 @@ public class Digraph {
     /**
      * Returns a string representation of the graph.
      *
-     * @return the number of vertices <em>V</em>, followed by the number of edges <em>E</em>,  
-     *         followed by the <em>V</em> adjacency lists
+     * @return the number of vertices <em>V</em>, followed by the number of edges <em>E</em>,
+     * followed by the <em>V</em> adjacency lists
      */
     public String toString() {
         StringBuilder s = new StringBuilder();

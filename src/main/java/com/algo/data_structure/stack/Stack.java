@@ -1,7 +1,7 @@
 package com.algo.data_structure.stack;
 
 public class Stack<T> {
-    private class Node{
+    private class Node {
         private T val;
         private Node next;
     }
@@ -9,7 +9,7 @@ public class Stack<T> {
     private int N;
     private Node first;
 
-    public void push(T val){
+    public void push(T val) {
         Node node = new Node();
         node.val = val;
         node.next = first;
@@ -17,7 +17,7 @@ public class Stack<T> {
         N++;
     }
 
-    public T pop(){
+    public T pop() {
         T temp = first.val;
         first = first.next;
         N--;

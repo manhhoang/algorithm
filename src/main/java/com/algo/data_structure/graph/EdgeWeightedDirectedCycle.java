@@ -16,29 +16,29 @@ import com.algo.algorithm.util.Stack;
  ******************************************************************************/
 
 /**
- *  The <tt>EdgeWeightedDirectedCycle</tt> class represents a data type for 
- *  determining whether an edge-weighted digraph has a directed cycle.
- *  The <em>hasCycle</em> operation determines whether the edge-weighted
- *  digraph has a directed cycle and, if so, the <em>cycle</em> operation
- *  returns one.
- *  <p>
- *  This implementation uses depth-first search.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>
- *  (in the worst case),
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <em>hasCycle</em> operation takes constant time;
- *  the <em>cycle</em> operation takes time proportional
- *  to the length of the cycle.
- *  <p>
- *  See {@link Topological} to compute a topological order if the edge-weighted
- *  digraph is acyclic.
- *  <p>
- *  For additional documentation,   
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of   
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ * The <tt>EdgeWeightedDirectedCycle</tt> class represents a data type for
+ * determining whether an edge-weighted digraph has a directed cycle.
+ * The <em>hasCycle</em> operation determines whether the edge-weighted
+ * digraph has a directed cycle and, if so, the <em>cycle</em> operation
+ * returns one.
+ * <p>
+ * This implementation uses depth-first search.
+ * The constructor takes time proportional to <em>V</em> + <em>E</em>
+ * (in the worst case),
+ * where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ * Afterwards, the <em>hasCycle</em> operation takes constant time;
+ * the <em>cycle</em> operation takes time proportional
+ * to the length of the cycle.
+ * <p>
+ * See {@link Topological} to compute a topological order if the edge-weighted
+ * digraph is acyclic.
+ * <p>
+ * For additional documentation,
+ * see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class EdgeWeightedDirectedCycle {
     private boolean[] marked;             // marked[v] = has vertex v been marked?
@@ -49,12 +49,13 @@ public class EdgeWeightedDirectedCycle {
     /**
      * Determines whether the edge-weighted digraph <tt>G</tt> has a directed cycle and,
      * if so, finds such a cycle.
+     *
      * @param G the edge-weighted digraph
      */
     public EdgeWeightedDirectedCycle(EdgeWeightedDigraph G) {
-        marked  = new boolean[G.V()];
+        marked = new boolean[G.V()];
         onStack = new boolean[G.V()];
-        edgeTo  = new DirectedEdge[G.V()];
+        edgeTo = new DirectedEdge[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
 
@@ -72,7 +73,7 @@ public class EdgeWeightedDirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            //found new vertex, so recur
+                //found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = e;
                 dfs(G, w);
@@ -95,6 +96,7 @@ public class EdgeWeightedDirectedCycle {
 
     /**
      * Does the edge-weighted digraph have a directed cycle?
+     *
      * @return <tt>true</tt> if the edge-weighted digraph has a directed cycle,
      * <tt>false</tt> otherwise
      */
@@ -105,8 +107,9 @@ public class EdgeWeightedDirectedCycle {
     /**
      * Returns a directed cycle if the edge-weighted digraph has a directed cycle,
      * and <tt>null</tt> otherwise.
+     *
      * @return a directed cycle (as an iterable) if the edge-weighted digraph
-     *    has a directed cycle, and <tt>null</tt> otherwise
+     * has a directed cycle, and <tt>null</tt> otherwise
      */
     public Iterable<DirectedEdge> cycle() {
         return cycle;

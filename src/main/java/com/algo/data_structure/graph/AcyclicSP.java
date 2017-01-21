@@ -28,23 +28,23 @@ import com.algo.algorithm.util.Stack;
  ******************************************************************************/
 
 /**
- *  The <tt>AcyclicSP</tt> class represents a data type for solving the
- *  single-source shortest paths problem in edge-weighted directed acyclic
- *  graphs (DAGs). The edge weights can be positive, negative, or zero.
- *  <p>
- *  This implementation uses a topological-sort based algorithm.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
- *  constant time and the <tt>pathTo()</tt> method takes time proportional to the
- *  number of edges in the shortest path returned.
- *  <p>
- *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ * The <tt>AcyclicSP</tt> class represents a data type for solving the
+ * single-source shortest paths problem in edge-weighted directed acyclic
+ * graphs (DAGs). The edge weights can be positive, negative, or zero.
+ * <p>
+ * This implementation uses a topological-sort based algorithm.
+ * The constructor takes time proportional to <em>V</em> + <em>E</em>,
+ * where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ * Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
+ * constant time and the <tt>pathTo()</tt> method takes time proportional to the
+ * number of edges in the shortest path returned.
+ * <p>
+ * For additional documentation,
+ * see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class AcyclicSP {
     private double[] distTo;         // distTo[v] = distance  of shortest s->v path
@@ -54,6 +54,7 @@ public class AcyclicSP {
     /**
      * Computes a shortest paths tree from <tt>s</tt> to every other vertex in
      * the directed acyclic graph <tt>G</tt>.
+     *
      * @param G the acyclic digraph
      * @param s the source vertex
      * @throws IllegalArgumentException if the digraph is not acyclic
@@ -82,14 +83,15 @@ public class AcyclicSP {
         if (distTo[w] > distTo[v] + e.weight()) {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
-        }       
+        }
     }
 
     /**
      * Returns the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     *
      * @param v the destination vertex
      * @return the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>;
-     *    <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * <tt>Double.POSITIVE_INFINITY</tt> if no such path
      */
     public double distTo(int v) {
         return distTo[v];
@@ -97,9 +99,10 @@ public class AcyclicSP {
 
     /**
      * Is there a path from the source vertex <tt>s</tt> to vertex <tt>v</tt>?
+     *
      * @param v the destination vertex
      * @return <tt>true</tt> if there is a path from the source vertex
-     *    <tt>s</tt> to vertex <tt>v</tt>, and <tt>false</tt> otherwise
+     * <tt>s</tt> to vertex <tt>v</tt>, and <tt>false</tt> otherwise
      */
     public boolean hasPathTo(int v) {
         return distTo[v] < Double.POSITIVE_INFINITY;
@@ -107,9 +110,10 @@ public class AcyclicSP {
 
     /**
      * Returns a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     *
      * @param v the destination vertex
      * @return a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>
-     *    as an iterable of edges, and <tt>null</tt> if no such path
+     * as an iterable of edges, and <tt>null</tt> if no such path
      */
     public Iterable<DirectedEdge> pathTo(int v) {
         if (!hasPathTo(v)) return null;
@@ -123,7 +127,8 @@ public class AcyclicSP {
 
     /**
      * Unit tests the <tt>AcyclicSP</tt> data type.
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         String currentPath = new File(".").getCanonicalPath();
@@ -141,8 +146,7 @@ public class AcyclicSP {
                     StdOut.print(e + "   ");
                 }
                 StdOut.println();
-            }
-            else {
+            } else {
                 StdOut.printf("%d to %d         no path\n", s, v);
             }
         }

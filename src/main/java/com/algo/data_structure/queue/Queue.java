@@ -10,22 +10,22 @@ public class Queue<T> {
     private Node last;
     private int N;
 
-    public void enqueue(T val){
+    public void enqueue(T val) {
         Node node = new Node();
         node.val = val;
         node.next = null;
-        if(last != null){
+        if (last != null) {
             last.next = node;
             last = node;
-        } else{
+        } else {
             last = node;
             first = last;
         }
         N++;
     }
 
-    public T dequeue(){
-        if(first == null)
+    public T dequeue() {
+        if (first == null)
             first = last;
         T temp = first.val;
         first = first.next;

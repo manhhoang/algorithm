@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import com.algo.algorithm.util.In;
-import com.algo.algorithm.util.IndexMinPQ;
+import com.algo.data_structure.queue.IndexMinPQ;
 import com.algo.algorithm.util.StdOut;
 import com.algo.algorithm.util.Stack;
 
@@ -41,23 +41,23 @@ import com.algo.algorithm.util.Stack;
 
 
 /**
- *  The <tt>DijkstraSP</tt> class represents a data type for solving the
- *  single-source shortest paths problem in edge-weighted digraphs
- *  where the edge weights are nonnegative.
- *  <p>
- *  This implementation uses Dijkstra's algorithm with a binary heap.
- *  The constructor takes time proportional to <em>E</em> log <em>V</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
- *  constant time and the <tt>pathTo()</tt> method takes time proportional to the
- *  number of edges in the shortest path returned.
- *  <p>
- *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ * The <tt>DijkstraSP</tt> class represents a data type for solving the
+ * single-source shortest paths problem in edge-weighted digraphs
+ * where the edge weights are nonnegative.
+ * <p>
+ * This implementation uses Dijkstra's algorithm with a binary heap.
+ * The constructor takes time proportional to <em>E</em> log <em>V</em>,
+ * where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ * Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
+ * constant time and the <tt>pathTo()</tt> method takes time proportional to the
+ * number of edges in the shortest path returned.
+ * <p>
+ * For additional documentation,
+ * see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class DijkstraSP {
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
@@ -68,8 +68,8 @@ public class DijkstraSP {
      * Computes a shortest-paths tree from the source vertex <tt>s</tt> to every other
      * vertex in the edge-weighted digraph <tt>G</tt>.
      *
-     * @param  G the edge-weighted digraph
-     * @param  s the source vertex
+     * @param G the edge-weighted digraph
+     * @param s the source vertex
      * @throws IllegalArgumentException if an edge weight is negative
      * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
      */
@@ -105,15 +105,16 @@ public class DijkstraSP {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
             if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-            else                pq.insert(w, distTo[w]);
+            else pq.insert(w, distTo[w]);
         }
     }
 
     /**
      * Returns the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
-     * @param  v the destination vertex
+     *
+     * @param v the destination vertex
      * @return the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>;
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * <tt>Double.POSITIVE_INFINITY</tt> if no such path
      */
     public double distTo(int v) {
         return distTo[v];
@@ -122,9 +123,9 @@ public class DijkstraSP {
     /**
      * Returns true if there is a path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
      *
-     * @param  v the destination vertex
+     * @param v the destination vertex
      * @return <tt>true</tt> if there is a path from the source vertex
-     *         <tt>s</tt> to vertex <tt>v</tt>; <tt>false</tt> otherwise
+     * <tt>s</tt> to vertex <tt>v</tt>; <tt>false</tt> otherwise
      */
     public boolean hasPathTo(int v) {
         return distTo[v] < Double.POSITIVE_INFINITY;
@@ -133,9 +134,9 @@ public class DijkstraSP {
     /**
      * Returns a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
      *
-     * @param  v the destination vertex
+     * @param v the destination vertex
      * @return a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>
-     *         as an iterable of edges, and <tt>null</tt> if no such path
+     * as an iterable of edges, and <tt>null</tt> if no such path
      */
     public Iterable<DirectedEdge> pathTo(int v) {
         if (!hasPathTo(v)) return null;
@@ -201,12 +202,13 @@ public class DijkstraSP {
 
     /**
      * Unit tests the <tt>DijkstraSP</tt> data type.
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-      String currentPath = new File(".").getCanonicalPath();
-      String fileName = currentPath + "/src/cs/tinyEWD.txt";
-      In in = new In(fileName);
+        String currentPath = new File(".").getCanonicalPath();
+        String fileName = currentPath + "/src/cs/tinyEWD.txt";
+        In in = new In(fileName);
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
         int s = Integer.parseInt("0");
 
@@ -222,8 +224,7 @@ public class DijkstraSP {
                     StdOut.print(e + "   ");
                 }
                 StdOut.println();
-            }
-            else {
+            } else {
                 StdOut.printf("%d to %d         no path\n", s, t);
             }
         }
