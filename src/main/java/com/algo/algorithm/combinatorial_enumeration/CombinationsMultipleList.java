@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CombinationsMultipleList {
 
-    private class Node {
+    private static class Node {
         public String value;
 
         public Node(String value) {
