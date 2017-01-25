@@ -1,9 +1,9 @@
-package com.algo.data_structure.tree;
+package com.algo.data_structure.tree.binary_tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFS_LevelOrderQueue {
+public class BinaryTreeLevelOrderTraversal {
 
     static class Node {
         int key;

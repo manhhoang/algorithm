@@ -1,4 +1,4 @@
-package com.algo.data_structure.tree.bst;
+package com.algo.data_structure.tree.binary_search_tree;
 
 /******************************************************************************
  * Compilation: javac BST.java Execution: java BST Dependencies: StdIn.java StdOut.java Queue.java
