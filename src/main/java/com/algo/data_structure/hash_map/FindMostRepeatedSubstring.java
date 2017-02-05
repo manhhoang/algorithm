@@ -10,7 +10,7 @@ public class FindMostRepeatedSubstring {
 
     public int findOccurences(String s, int k) {
         int max = 1;
-        Map<String, Integer> map = new HashMap<String, Integer>();
+        Map<String, Integer> map = new HashMap<>();
         int counter = 0;
         String sub;
         int stringLen = s.length();
@@ -21,7 +21,6 @@ public class FindMostRepeatedSubstring {
                 counter++;
                 max = Math.max(counter, max);
                 map.put(sub, counter);
-                counter = 0;
             } else {
                 map.put(sub, 1);
             }
