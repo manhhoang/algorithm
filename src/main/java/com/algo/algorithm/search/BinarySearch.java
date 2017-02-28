@@ -1,5 +1,8 @@
 package com.algo.algorithm.search;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.Arrays;
 
 public class BinarySearch {
@@ -23,9 +26,31 @@ public class BinarySearch {
         return false;
     }
 
-    public static void main(String arr[]) {
-        int[] a = {10, 34, 2, 56, 7, 67, 88, 42};
-        boolean result = binarySearch(2, a);
-        System.out.println(result);
+    public static int binarySearch1(int key, int[] a) {
+        Arrays.sort(a);
+        int low = 0;
+        int high = a.length - 1;
+        while (low <= high) {
+            int middle = (low + high) / 2;
+            if (a[middle] < key) {
+                low = middle + 1;
+            } else {
+                high = middle - 1;
+            }
+        }
+        if(a[low] == key)
+            return low;
+        return -1;
     }
+
+    @Test
+    public void test1() {
+        Assert.assertEquals(true, binarySearch(5, new int[]{1, 2, 5, 9, 9}));
+    }
+
+    @Test
+    public void test2() {
+        Assert.assertEquals(2, binarySearch1(5, new int[]{1, 2, 5, 9, 9}));
+    }
+
 }
