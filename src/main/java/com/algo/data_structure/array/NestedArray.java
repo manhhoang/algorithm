@@ -29,4 +29,14 @@ public class NestedArray {
     public void test1() {
         Assert.assertEquals(4, solution(new int[]{5, 4, 0, 3, 1, 6, 2}));
     }
+
+    @Test
+    public void test2() {
+        Assert.assertEquals(3, solution(new int[]{1, 0, 3, 4, 2}));
+    }
+
+    @Test
+    public void test3() {
+        Assert.assertEquals(1, solution(new int[]{0}));
+    }
 }
