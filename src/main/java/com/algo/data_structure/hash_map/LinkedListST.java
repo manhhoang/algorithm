@@ -1,4 +1,4 @@
-package com.algo.data_structure.linked_list;
+package com.algo.data_structure.hash_map;
 
 /******************************************************************************
  * Compilation: javac LinkedListST.java Execution: java LinkedListST
