@@ -24,6 +24,16 @@
 
 package com.algo.algorithm_technique.dp;
 
+/**
+ * List all primes of a number.
+ *
+ * Input:
+ * 25
+ *
+ * Output:
+ * 2 3 5 7 11 13 17 19 23
+ *
+ */
 public class PrimeSieve {
     public static void main(String[] args) {
         int N = 25;
