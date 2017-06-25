@@ -2,6 +2,10 @@ package com.algo.data_structure.tree.binary_tree;
 
 import java.util.Stack;
 
+/**
+ * Implement iterator for binary tree by pre-order traversal (DFS)
+ *
+ */
 public class BinaryTreePreOrderIterator {
 
     private static class Node {

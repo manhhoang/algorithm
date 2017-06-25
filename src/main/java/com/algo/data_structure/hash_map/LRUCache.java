@@ -2,6 +2,9 @@ package com.algo.data_structure.hash_map;
 
 import java.util.HashMap;
 
+/**
+ * Implement Least Recently Used (LRU) Cache.
+ */
 public class LRUCache {
 
     class Node{

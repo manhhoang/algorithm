@@ -6,6 +6,18 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Find the most repeated substring.
+ *
+ * Input:
+ * K = 2 : K is min length of the substring
+ * L = 3 : L is max length of the substring
+ * s = ababab
+ *
+ * Output:
+ * 3 (ab,ab,ab)
+ *
+ */
 public class FindMostRepeatedSubstring {
 
     public int findOccurences(String s, int k) {

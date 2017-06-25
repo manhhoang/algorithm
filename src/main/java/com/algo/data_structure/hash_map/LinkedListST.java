@@ -1,7 +1,9 @@
 package com.algo.data_structure.hash_map;
 
-/******************************************************************************
- * Compilation: javac LinkedListST.java Execution: java LinkedListST
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+/**
  *
  * Symbol table implementation with linked list.
  *
@@ -10,11 +12,7 @@ package com.algo.data_structure.hash_map;
  * Remarks ------- - Consider using a sentinel to eliminate annoying special case when deleting at
  * the beginning of the list.
  *
- ******************************************************************************/
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
+ */
 public class LinkedListST<Key, Value> implements Iterable<Key> {
 
     private int N; // number of key-value pairs

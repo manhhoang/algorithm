@@ -3,6 +3,10 @@ package com.algo.data_structure.tree.binary_tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Breadth First Search in binary tree.
+ *
+ */
 public class BinaryTreeLevelOrderTraversal {
 
     static class Node {

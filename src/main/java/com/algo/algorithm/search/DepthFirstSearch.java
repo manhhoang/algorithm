@@ -1,5 +1,21 @@
 package com.algo.algorithm.search;
 
+/**
+ * Implement DFS in 2D array.
+ * Find the number of connected number 1.
+ * Find the largest connected number 1.
+ *
+ * Input:
+ * {{1, 1, 0, 0, 0},
+ *  {0, 1, 0, 0, 1},
+ *  {1, 0, 0, 1, 1},
+ *  {0, 0, 0, 0, 0},
+ *  {1, 0, 1, 0, 1}}
+ *
+ * Output:
+ * Number of islands is: 5
+ * Largest islands is: 4
+ */
 public class DepthFirstSearch {
 
     private static final int ROW = 5, COL = 5;

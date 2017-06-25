@@ -7,6 +7,18 @@ import java.util.Stack;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Check parenthesis well balancing.
+ *
+ * Input:
+ * {([])}
+ * {([)}
+ *
+ * Output:
+ * true
+ * false
+ *
+ */
 public class Parenthesis {
 
     public static boolean solve(String s) {

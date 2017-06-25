@@ -12,15 +12,15 @@ public class BinarySearch {
         int low = 0;
         int high = a.length - 1;
         while (low <= high) {
-            int middle = (low + high) / 2;
-            if (a[middle] == key) {
+            int mid = (low + high) / 2;
+            if (a[mid] == key) {
                 return true;
             }
-            if (a[middle] < key) {
-                low = middle + 1;
+            if (a[mid] < key) {
+                low = mid + 1;
             }
-            if (a[middle] > key) {
-                high = middle - 1;
+            if (a[mid] > key) {
+                high = mid - 1;
             }
         }
         return false;
@@ -31,11 +31,11 @@ public class BinarySearch {
         int low = 0;
         int high = a.length - 1;
         while (low <= high) {
-            int middle = (low + high) / 2;
-            if (a[middle] < key) {
-                low = middle + 1;
+            int mid = (low + high) / 2;
+            if (a[mid] < key) {
+                low = mid + 1;
             } else {
-                high = middle - 1;
+                high = mid - 1;
             }
         }
         if(a[low] == key)

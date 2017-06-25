@@ -4,6 +4,25 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+/**
+ * Implement BFS in the 2D array.
+ *
+ * Given a point at {0,0}. Find the shortest path to any points in the matrix.
+ *
+ * Input:
+ * {{0, 1, 0, 0, 0},
+ *  {0, 0, 0, 1, 0},
+ *  {0, 1, 1, 1, 0},
+ *  {0, 0, 0, 1, 0},
+ *  {1, 0, 0, 0, 0}}
+ *
+ * Output:
+ * 0 0 4 5 6
+ * 1 2 3 0 7
+ * 2 0 0 0 8
+ * 3 4 5 0 9
+ * 0 5 6 7 8
+ */
 public class BreadthFirstSearch {
 
     //No of rows and columns

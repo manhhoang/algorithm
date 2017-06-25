@@ -2,6 +2,16 @@ package com.algo.algorithm_technique.two_pointers;
 
 import java.util.Arrays;
 
+/**
+ * Count the most duplicated element in the array.
+ *
+ * Input:
+ * {1, 2, 3, 2, 4, 3, 2}
+ *
+ * Output:
+ * 3
+ *
+ */
 public class CountDuplicatedElement {
 
     private static int solution(int[] a) {

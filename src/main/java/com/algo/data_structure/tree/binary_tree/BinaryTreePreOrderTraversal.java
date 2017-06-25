@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * Depth First Search in binary tree.
+ *
+ */
 public class BinaryTreePreOrderTraversal {
 
     private static class Node {
