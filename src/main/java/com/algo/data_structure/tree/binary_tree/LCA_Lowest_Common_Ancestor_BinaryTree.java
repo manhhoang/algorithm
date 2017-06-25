@@ -1,4 +1,4 @@
-package com.algo.data_structure.tree;
+package com.algo.data_structure.tree.binary_tree;
 
 public class LCA_Lowest_Common_Ancestor_BinaryTree {
 

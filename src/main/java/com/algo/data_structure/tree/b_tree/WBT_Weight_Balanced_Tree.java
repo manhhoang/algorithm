@@ -1,4 +1,4 @@
-package com.algo.data_structure.tree;
+package com.algo.data_structure.tree.b_tree;
 
 import java.io.File;
 import java.util.Scanner;
@@ -32,7 +32,7 @@ public class WBT_Weight_Balanced_Tree {
 
     public static void main(String[] args) throws Exception {
         String currentPath = new File(".").getCanonicalPath();
-        String fileName = currentPath + "/src/cs/WBT_Weight_Balanced_Tree";
+        String fileName = currentPath + "/data/WBT_Weight_Balanced_Tree";
         File file = new File(fileName);
         Scanner sc = new Scanner(file);
 
