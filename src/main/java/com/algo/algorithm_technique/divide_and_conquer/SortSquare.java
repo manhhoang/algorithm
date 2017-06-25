@@ -1,7 +1,7 @@
 package com.algo.algorithm_technique.divide_and_conquer;
 
 /**
- * Sort array after converting elements to their squares
+ * Sort array after converting elements to their squares. Using Merge function in merge sort
  *
  * Input:
  * arr[] =  {-6, -3, -1, 2, 4, 5}

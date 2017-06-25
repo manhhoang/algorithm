@@ -1,7 +1,7 @@
 package com.algo.algorithm_technique.divide_and_conquer;
 
 /**
- * Find the closest value in an sorted array.
+ * Find the closest value in an sorted array. Using binary search
  *
  * Input:
  * a = {-6, 2, 4, 7, 13, 36}

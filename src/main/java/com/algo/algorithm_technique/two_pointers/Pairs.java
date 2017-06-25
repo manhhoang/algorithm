@@ -5,6 +5,18 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Find the pair in 2 arrays if sum of them equal a number X
+ *
+ * Input:
+ * a1 = {1, 2, 5}
+ * a2 = {2, 4, 7}
+ * X = 3
+ *
+ * Output:
+ * {0, 0} because 1 + 2 = 3
+ *
+ */
 public class Pairs {
 
 	public static int[] solution(int[] a, int[] b, int X) {
