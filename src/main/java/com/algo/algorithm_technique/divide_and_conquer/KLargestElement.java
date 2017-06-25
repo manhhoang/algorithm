@@ -1,12 +1,15 @@
 package com.algo.algorithm_technique.divide_and_conquer;
 
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
 /**
  * Find k largest element in an unsorted array by using QuickSelect, partition in Quick sort.
  *
  * Input:
  * a = {1, 3, 5, 2, 4}
- * k = 0
  * k = 1
+ * k = 2
  * Output:
  * 5
  * 4
@@ -14,18 +17,36 @@ package com.algo.algorithm_technique.divide_and_conquer;
  */
 public class KLargestElement {
 
+    // O(nlogn) running time + O(1) memory
+    public static int findKthLargest1(int[] nums, int k) {
+        final int N = nums.length;
+        Arrays.sort(nums);
+        return nums[N - k];
+    }
+
+    // O(nlogk) running time + O(k) memory
+    public static int findKthLargest2(int[] nums, int k) {
+        final PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int val : nums) {
+            pq.offer(val);
+            if(pq.size() > k) {
+                pq.poll();
+            }
+        }
+        return pq.peek();
+    }
+
     private static int partition(int[] a, int lo, int hi) {
         int i = lo;
         int j = hi + 1;
-        int v = a[lo];
         while (true) {
             // find item on lo to swap
-            while (a[++i] < v)
+            while (a[++i] < a[lo])
                 if (i == hi)
                     break;
 
             // find item on hi to swap
-            while (v < a[--j])
+            while (a[lo] < a[--j])
                 if (j == lo)
                     break;
 
@@ -35,7 +56,6 @@ public class KLargestElement {
             exch(a, i, j);
         }
 
-        // put partitioning item v at a[j]
         exch(a, lo, j);
 
         // now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
@@ -43,16 +63,18 @@ public class KLargestElement {
     }
 
     public static int select(int[] a, int k) {
-        if (k < 0 || k >= a.length) {
+        if (k < 0 || k > a.length) {
             throw new IndexOutOfBoundsException("Selected element out of bounds");
         }
-        int lo = 0, hi = a.length - 1;
-        while (hi > lo) {
+        k = a.length - k;
+        int lo = 0;
+        int hi = a.length - 1;
+        while (lo < hi) {
             int i = partition(a, lo, hi);
-            if (i > k)
-                hi = i - 1;
-            else if (i < k)
+            if (i < k)
                 lo = i + 1;
+            else if (i > k)
+                hi = i - 1;
             else
                 return a[i];
         }
@@ -67,8 +89,9 @@ public class KLargestElement {
 
     public static void main(String[] args) {
         int[] a = new int[]{1, 3, 5, 2, 4};
-        int k = 0;
-        int ith = select(a, k);
-        System.out.println(ith); // print 5
+        int k = 1;
+        System.out.println(findKthLargest1(a, k));
+        System.out.println(findKthLargest2(a, k));
+        System.out.println(select(a, k));
     }
 }
