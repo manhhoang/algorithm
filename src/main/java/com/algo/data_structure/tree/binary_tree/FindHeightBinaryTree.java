@@ -1,5 +1,8 @@
 package com.algo.data_structure.tree.binary_tree;
 
+/**
+ * Find the height of binary tree using DFS
+ */
 public class FindHeightBinaryTree {
 
     private static class Node {
