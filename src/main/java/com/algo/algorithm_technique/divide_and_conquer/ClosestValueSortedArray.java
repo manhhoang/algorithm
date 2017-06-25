@@ -26,7 +26,6 @@ public class ClosestValueSortedArray {
 
         while (lo <= hi) {
             int mid = (hi + lo) / 2;
-
             if (x < a[mid]) {
                 hi = mid - 1;
             } else if (x > a[mid]) {
