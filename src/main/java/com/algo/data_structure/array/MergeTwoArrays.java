@@ -2,7 +2,7 @@ package com.algo.data_structure.array;
 
 import java.util.Arrays;
 
-public class MegerTwoArrays {
+public class MergeTwoArrays {
 
     /* Function prints union of arr1[] and arr2[]
     m is the number of elements in arr1[]
