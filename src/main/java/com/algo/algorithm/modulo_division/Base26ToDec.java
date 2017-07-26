@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class LettersToInt {
+public class Base26ToDec {
 
-    public static int lettersToInt(String letters) {
+    public static int alphabetToDec(String letters) {
         int res = 0;
         for (Character c : letters.toCharArray()) {
             int d = c - 'A' + 1;
@@ -17,26 +17,26 @@ public class LettersToInt {
 
     @Test
     public void test1() {
-        assertEquals(1, lettersToInt("A"));
+        assertEquals(1, alphabetToDec("A"));
     }
 
     @Test
     public void test2() {
-        assertEquals(27, lettersToInt("AA"));
+        assertEquals(27, alphabetToDec("AA"));
     }
 
     @Test
     public void test3() {
-        assertEquals(28, lettersToInt("AB"));
+        assertEquals(28, alphabetToDec("AB"));
     }
 
     @Test
     public void test4() {
-        assertEquals(703, lettersToInt("AAA"));
+        assertEquals(703, alphabetToDec("AAA"));
     }
 
     @Test
     public void test5() {
-        assertEquals(704, lettersToInt("AAB"));
+        assertEquals(704, alphabetToDec("AAB"));
     }
 }
