@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PowerSet {
 
-    public static ArrayList<String> getpowerset(int a[], int n, ArrayList<String> ps) {
+    public static ArrayList<String> getPowerset(int a[], int n, ArrayList<String> ps) {
         if (n < 0) {
             return null;
         }
@@ -17,7 +17,7 @@ public class PowerSet {
             ps.add(" ");
             return ps;
         }
-        ps = getpowerset(a, n - 1, ps);
+        ps = getPowerset(a, n - 1, ps);
         ArrayList<String> tmp = new ArrayList<String>();
         for (String s : ps) {
             if (s.equals(" "))
@@ -56,7 +56,7 @@ public class PowerSet {
     public static void main(String[] args) {
         int[] a = new int[]{1, 2, 3};
         ArrayList<String> ps = new ArrayList<>();
-        getpowerset(a, a.length, ps);
+        getPowerset(a, a.length, ps);
         ps.forEach((x) -> System.out.println(x));
 
         System.out.println();
