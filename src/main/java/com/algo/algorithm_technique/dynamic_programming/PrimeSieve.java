@@ -22,7 +22,7 @@
  *
  ******************************************************************************/
 
-package com.algo.algorithm_technique.dp;
+package com.algo.algorithm_technique.dynamic_programming;
 
 /**
  * List all primes of a number.

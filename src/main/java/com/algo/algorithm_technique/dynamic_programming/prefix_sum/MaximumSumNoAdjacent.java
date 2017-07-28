@@ -1,4 +1,4 @@
-package com.algo.algorithm_technique.dp.prefix_sum;
+package com.algo.algorithm_technique.dynamic_programming.prefix_sum;
 
 import org.junit.Assert;
 import org.junit.Test;

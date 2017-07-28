@@ -1,4 +1,4 @@
-package com.algo.algorithm.math;
+package com.algo.algorithm.modulo_division;
 
 import org.junit.Assert;
 import org.junit.Test;
