@@ -2,19 +2,18 @@ package com.algo.algorithm.string;
 
 /**
  * Check if 2 string anagram.
- *
+ * <p>
  * Input:
  * a = "abc"
  * b = "bac"
- *
+ * <p>
  * Output:
  * true
- *
  */
 public class ValidAnagram {
 
     public static boolean isAnagram(String a, String b) {
-        if(a.length() != b.length())
+        if (a.length() != b.length())
             return false;
 
         int[] arr = new int[26];
