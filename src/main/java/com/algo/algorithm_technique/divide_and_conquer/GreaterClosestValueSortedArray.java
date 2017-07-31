@@ -1,18 +1,11 @@
 package com.algo.algorithm_technique.divide_and_conquer;
 
-/**
- * Find the closest value in an sorted array. Using binary search
- * <p>
- * Input:
- * a = {-6, 2, 4, 7, 13, 36}
- * x = 5
- * <p>
- * Output:
- * 4
- */
-public class ClosestValueSortedArray {
+import org.junit.Assert;
+import org.junit.Test;
 
-    private static double findClosest(int[] a, int x) {
+public class GreaterClosestValueSortedArray {
+
+    public int findGreaterClosest(int[] a, int x) {
         if (x < a[0]) {
             return a[0];
         }
@@ -37,8 +30,22 @@ public class ClosestValueSortedArray {
         return (a[lo] - x) < (x - a[hi]) ? a[lo] : a[hi];
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void test1() {
         int[] a = new int[]{-6, 2, 4, 7, 13, 36};
-        System.out.println(findClosest(a, 5));
+        Assert.assertEquals(findGreaterClosest(a, 5), 7);
     }
+
+    @Test
+    public void test2() {
+        int[] a = new int[]{-6, 2, 4, 7, 13, 36};
+        Assert.assertEquals(findGreaterClosest(a, 4), 4);
+    }
+
+    @Test
+    public void test3() {
+        int[] a = new int[]{-6, 2, 4, 7, 13, 36};
+        Assert.assertEquals(findGreaterClosest(a, 8), 13);
+    }
+
 }
