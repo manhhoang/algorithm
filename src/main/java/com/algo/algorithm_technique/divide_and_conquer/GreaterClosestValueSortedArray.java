@@ -3,6 +3,16 @@ package com.algo.algorithm_technique.divide_and_conquer;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Find the greater closest value in an sorted array. Using binary search
+ * <p>
+ * Input:
+ * a = {-6, 2, 4, 7, 13, 36}
+ * x = 5
+ * <p>
+ * Output:
+ * 7
+ */
 public class GreaterClosestValueSortedArray {
 
     public int findGreaterClosest(int[] a, int x) {
@@ -27,7 +37,7 @@ public class GreaterClosestValueSortedArray {
             }
         }
         // lo == hi + 1
-        return (a[lo] - x) < (x - a[hi]) ? a[lo] : a[hi];
+        return a[lo];
     }
 
     @Test
