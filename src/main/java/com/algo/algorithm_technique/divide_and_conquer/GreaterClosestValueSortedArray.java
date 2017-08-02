@@ -4,18 +4,18 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Find the closest value in an sorted array. Using binary search
+ * Find the greater closest value in an sorted array. Using binary search
  * <p>
  * Input:
  * a = {-6, 2, 4, 7, 13, 36}
  * x = 5
  * <p>
  * Output:
- * 4
+ * 7
  */
-public class ClosestValueSortedArray {
+public class GreaterClosestValueSortedArray {
 
-    private static int findClosest(int[] a, int x) {
+    public int findGreaterClosest(int[] a, int x) {
         if (x < a[0]) {
             return a[0];
         }
@@ -37,24 +37,25 @@ public class ClosestValueSortedArray {
             }
         }
         // lo == hi + 1
-        return (a[lo] - x) < (x - a[hi]) ? a[lo] : a[hi];
+        return a[lo];
     }
 
     @Test
     public void test1() {
         int[] a = new int[]{-6, 2, 4, 7, 13, 36};
-        Assert.assertEquals(findClosest(a, 5), 4);
+        Assert.assertEquals(findGreaterClosest(a, 5), 7);
     }
 
     @Test
     public void test2() {
         int[] a = new int[]{-6, 2, 4, 7, 13, 36};
-        Assert.assertEquals(findClosest(a, 4), 4);
+        Assert.assertEquals(findGreaterClosest(a, 4), 4);
     }
 
     @Test
     public void test3() {
         int[] a = new int[]{-6, 2, 4, 7, 13, 36};
-        Assert.assertEquals(findClosest(a, 8), 7);
+        Assert.assertEquals(findGreaterClosest(a, 8), 13);
     }
+
 }
