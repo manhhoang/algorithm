@@ -1,4 +1,4 @@
-package com.algo.algorithm.thread_safe;
+package com.algo.data_structure.queue;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +8,6 @@ public class BlockingQueueTest {
     @SuppressWarnings("unchecked")
     @Test
     public void test1() throws InterruptedException {
-        @SuppressWarnings("rawtypes")
         BlockingQueue bq = new ArrayBlockingQueue(1);
         bq.push("Test");
         Assert.assertEquals(bq.pop(), "Test");
@@ -17,7 +16,6 @@ public class BlockingQueueTest {
     @SuppressWarnings("unchecked")
     @Test
     public void test2() throws InterruptedException {
-        @SuppressWarnings("rawtypes")
         BlockingQueue bq = new ArrayBlockingQueue(1);
         try {
             bq.push(null);
@@ -29,7 +27,6 @@ public class BlockingQueueTest {
     @SuppressWarnings("unchecked")
     @Test
     public void test3() throws InterruptedException {
-        @SuppressWarnings("rawtypes")
         BlockingQueue bq = new ArrayBlockingQueue(2);
         bq.push("1");
         bq.push("2");

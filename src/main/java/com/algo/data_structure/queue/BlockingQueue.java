@@ -1,4 +1,4 @@
-package com.algo.algorithm.thread_safe;
+package com.algo.data_structure.queue;
 
 public interface BlockingQueue<E> extends Iterable<E> {
 
