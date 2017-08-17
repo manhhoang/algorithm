@@ -20,8 +20,8 @@ public class MajorityElement {
         Map<Integer, Integer> map = new ConcurrentHashMap<>();
         for (int i = 0; i < nums.length; i++) {
             map.putIfAbsent(nums[i], 0);
-            map.merge(nums[i], 1, Integer::sum);
-            if (map.get(nums[i]) * 2 > nums.length) {
+            int count = map.merge(nums[i], 1, Integer::sum);
+            if (count * 2 > nums.length) {
                 return String.valueOf(nums[i]);
             }
         }

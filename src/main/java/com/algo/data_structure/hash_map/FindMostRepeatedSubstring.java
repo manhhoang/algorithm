@@ -1,41 +1,32 @@
 package com.algo.data_structure.hash_map;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Find the most repeated substring.
- *
+ * <p>
  * Input:
  * K = 2 : K is min length of the substring
  * L = 3 : L is max length of the substring
  * s = ababab
- *
+ * <p>
  * Output:
  * 3 (ab,ab,ab)
- *
  */
 public class FindMostRepeatedSubstring {
 
     public int findOccurences(String s, int k) {
         int max = 1;
-        Map<String, Integer> map = new HashMap<>();
-        int counter = 0;
-        String sub;
-        int stringLen = s.length();
-        for (int i = 0; i < stringLen - k + 1; i++) {
-            sub = s.substring(i, i + k);
-            if (map.containsKey(sub)) {
-                counter = map.get(sub);
-                counter++;
-                max = Math.max(counter, max);
-                map.put(sub, counter);
-            } else {
-                map.put(sub, 1);
-            }
+        Map<String, Integer> map = new ConcurrentHashMap<>();
+        for (int i = 0; i < s.length() - k + 1; i++) {
+            String sub = s.substring(i, i + k);
+            map.putIfAbsent(sub, 0);
+            int counter = map.merge(sub, 1, Integer::sum);
+            max = Math.max(counter, max);
         }
         return max;
     }
