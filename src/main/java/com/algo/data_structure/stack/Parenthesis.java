@@ -1,5 +1,6 @@
 package com.algo.data_structure.stack;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -26,10 +27,14 @@ public class Parenthesis {
         map.put("(", ")");
         map.put("[", "]");
         map.put("{", "}");
+        String[] str = new String[] {"(", "{", "[", "]", "}", ")"};
         int len = s.length();
         Stack<String> st = new Stack<>();
         for (int i = 0; i < len; i++) {
             String k = String.valueOf(s.charAt(i));
+            if(k.trim().equals("") || !Arrays.asList(str).contains(k)) {
+                continue;
+            }
             if (map.keySet().contains(k)) {
                 st.push(k);
             } else if (st.size() > 0) {
@@ -92,5 +97,16 @@ public class Parenthesis {
     @Test
     public void test8() {
         Assert.assertFalse(solve("([]"));
+    }
+
+    @Test
+    public void test9() {
+        Assert.assertTrue(solve("(((185 + 223.85) * 15) - 543)/2"));
+    }
+
+    @Test
+    public void test10() {
+        String s = "( )";
+        Assert.assertTrue(solve(s));
     }
 }
