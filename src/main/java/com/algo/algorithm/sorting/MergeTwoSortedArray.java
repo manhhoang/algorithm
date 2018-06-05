@@ -5,39 +5,43 @@ import org.junit.Test;
 
 public class MergeTwoSortedArray {
 
-    public static int[] solution(int[] arr1, int[] arr2) {
-        int n1 = arr1.length;
-        int n2 = arr2.length;
-        int[] arr3 = new int[n1 + n2];
-        int i = 0, j = 0, k = 0;
+    public static int[] solution(int[] first, int[] second) {
+        int[] result = new int[first.length + second.length];
+        int i = 0;
+        int j = 0;
+        int m = 0;
 
-        // Traverse both array
-        while (i < n1 && j < n2) {
-            // Check if current element of first
-            // array is smaller than current element
-            // of second array. If yes, store first
-            // array element and increment first array
-            // index. Otherwise do same with second array
-            if (arr1[i] < arr2[j])
-                arr3[k++] = arr1[i++];
-            else
-                arr3[k++] = arr2[j++];
+        // Compare elements at i and j
+        while (i < first.length && j < second.length) {
+            if (first[i] < second[j]) {
+                result[m] = first[i];
+                i++;
+            } else {
+                result[m] = second[j];
+                j++;
+            }
+            m++;
         }
-
-        // Store remaining elements of first array
-        while (i < n1)
-            arr3[k++] = arr1[i++];
-
-        // Store remaining elements of second array
-        while (j < n2)
-            arr3[k++] = arr2[j++];
-
-        return arr3;
+        // Copy remaining elements
+        System.arraycopy(first, i, result, m, first.length - i);
+        System.arraycopy(second, j, result, m, second.length - j);
+        return result;
     }
 
     @Test
     public void test1() {
-        Assert.assertEquals(new int[]{1, 1, 1, 2, 3, 3, 4, 5}, solution(new int[]{1, 1, 3, 5}, new int[]{1, 2, 3, 4}));
+        Assert.assertArrayEquals(new int[]{1, 1, 2}, solution(new int[]{2}, new int[]{1, 1}));
+    }
+
+    @Test
+    public void test2() {
+        Assert.assertArrayEquals(new int[]{1, 1, 1, 2, 3, 3, 4, 5}, solution(new int[]{1, 1, 3, 5}, new int[]{1, 2, 3, 4}));
+    }
+
+
+    @Test
+    public void test3() {
+        Assert.assertArrayEquals(new int[]{-5, -1, 0, 1, 3, 3, 4, 5}, solution(new int[]{-1, 1, 3, 5}, new int[]{-5, 0, 3, 4}));
     }
 
 }
